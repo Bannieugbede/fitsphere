@@ -26,7 +26,7 @@ class ProgressComponent extends StatefulWidget {
   final String? mUnit;
   final Function? onCall;
 
-  ProgressComponent({this.mGraphModel, this.mType, this.mUnit, this.onCall});
+  const ProgressComponent({super.key, this.mGraphModel, this.mType, this.mUnit, this.onCall});
 
   @override
   ProgressComponentState createState() => ProgressComponentState();
@@ -152,7 +152,7 @@ class ProgressComponentState extends State<ProgressComponent> {
                       setState(() {});
                     },
                     onTap: () async {
-                      FocusScope.of(context).requestFocus(new FocusNode());
+                      FocusScope.of(context).requestFocus(FocusNode());
                       pickedDate = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime.now());
                       if (pickedDate != null) {
                         print(pickedDate);

@@ -17,7 +17,7 @@ class DietCategoryComponent extends StatefulWidget {
 
   final Function? onCall;
 
-  DietCategoryComponent({
+  const DietCategoryComponent({super.key, 
     this.mCategoryDietModel,
     this.isGrid = false,
     this.onCall,

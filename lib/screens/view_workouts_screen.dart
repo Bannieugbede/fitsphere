@@ -16,7 +16,7 @@ class ViewWorkoutsScreen extends StatefulWidget {
   final bool? isFav;
   final bool? isAssign;
 
-  ViewWorkoutsScreen({this.isFav = false, this.isAssign = false});
+  const ViewWorkoutsScreen({super.key, this.isFav = false, this.isAssign = false});
 
   @override
   _ViewWorkoutsScreenState createState() => _ViewWorkoutsScreenState();

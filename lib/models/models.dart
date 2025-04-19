@@ -34,14 +34,14 @@ class Tabata {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['sets'] = this.sets;
-    data['reps'] = this.reps;
-    data['status'] = this.status;
-    data['exerciseTime'] = this.exerciseTime;
-    data['restTime'] = this.restTime;
-    data['breakTime'] = this.breakTime!.inSeconds;
-    data['startDelay'] = this.startDelay!.inSeconds;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['sets'] = sets;
+    data['reps'] = reps;
+    data['status'] = status;
+    data['exerciseTime'] = exerciseTime;
+    data['restTime'] = restTime;
+    data['breakTime'] = breakTime!.inSeconds;
+    data['startDelay'] = startDelay!.inSeconds;
     return data;
   }
 
@@ -50,10 +50,10 @@ class Tabata {
 enum WorkoutState { initial, starting, exercising, resting, breaking, finished }
 
 class Workout {
-  Tabata _config;
+  final Tabata _config;
 
   /// Callback for when the workout's state has changed.
-  Function _onStateChange;
+  final Function _onStateChange;
 
   WorkoutState _step = WorkoutState.initial;
 
@@ -65,7 +65,7 @@ class Workout {
 
   int _set = 0;
 
-  String _status = "";
+  final String _status = "";
 
   int _rep = 0;
 

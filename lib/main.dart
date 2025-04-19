@@ -45,7 +45,8 @@ Future<void> initialize({
   String? defaultLanguage,
 }) async {
   localeLanguageList = aLocaleLanguageList ?? [];
-  selectedLanguageDataModel = getSelectedLanguageModel(defaultLanguage: defaultLanguage);
+  selectedLanguageDataModel =
+      getSelectedLanguageModel(defaultLanguage: defaultLanguage);
 }
 
 Future<void> main() async {
@@ -60,7 +61,8 @@ Future<void> main() async {
   });
 
   setLogInValue();
-  defaultAppButtonShapeBorder = RoundedRectangleBorder(borderRadius: radius(defaultAppButtonRadius));
+  defaultAppButtonShapeBorder =
+      RoundedRectangleBorder(borderRadius: radius(defaultAppButtonRadius));
   oneSignalData();
   await AwesomeNotifications().initialize(
     null,
@@ -89,7 +91,10 @@ Future<void> main() async {
   );
   setTheme();
   if (!getStringAsync(PROGRESS_SETTINGS_DETAIL).isEmptyOrNull) {
-    userStore.addAllProgressSettingsListItem(jsonDecode(getStringAsync(PROGRESS_SETTINGS_DETAIL)).map<ProgressSettingModel>((e) => ProgressSettingModel.fromJson(e)).toList());
+    userStore.addAllProgressSettingsListItem(
+        jsonDecode(getStringAsync(PROGRESS_SETTINGS_DETAIL))
+            .map<ProgressSettingModel>((e) => ProgressSettingModel.fromJson(e))
+            .toList());
   } else {
     userStore.addAllProgressSettingsListItem(progressSettingList());
   }
@@ -112,6 +117,8 @@ Future<void> updatePlayerId() async {
 class MyApp extends StatefulWidget {
   static String tag = '/MyApp';
 
+  const MyApp({super.key});
+
   @override
   MyAppState createState() => MyAppState();
 }
@@ -127,7 +134,8 @@ class MyAppState extends State<MyApp> {
   }
 
   void init() async {
-    _connectivitySubscription = Connectivity().onConnectivityChanged.listen((e) {
+    _connectivitySubscription =
+        Connectivity().onConnectivityChanged.listen((e) {
       if (e == ConnectivityResult.none) {
         log('not connected');
         isCurrentlyOnNoInternet = true;
@@ -145,7 +153,9 @@ class MyAppState extends State<MyApp> {
 
   @override
   void didChangeDependencies() {
-    if (getIntAsync(THEME_MODE_INDEX) == ThemeModeSystem) appStore.setDarkMode(MediaQuery.of(context).platformBrightness == Brightness.dark);
+    if (getIntAsync(THEME_MODE_INDEX) == ThemeModeSystem)
+      appStore.setDarkMode(
+          MediaQuery.of(context).platformBrightness == Brightness.dark);
     super.didChangeDependencies();
   }
 
@@ -165,9 +175,7 @@ class MyAppState extends State<MyApp> {
         scrollBehavior: SBehavior(),
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        themeMode:  appStore.isDarkMode
-                ? ThemeMode.dark
-                : ThemeMode.light,
+        themeMode: appStore.isDarkMode ? ThemeMode.dark : ThemeMode.light,
         localizationsDelegates: [
           AppLocalizations(),
           GlobalMaterialLocalizations.delegate,
@@ -175,7 +183,8 @@ class MyAppState extends State<MyApp> {
           GlobalCupertinoLocalizations.delegate,
         ],
         localeResolutionCallback: (locale, supportedLocales) => locale,
-        locale: Locale(appStore.selectedLanguageCode.validate(value: DEFAULT_LANGUAGE)),
+        locale: Locale(
+            appStore.selectedLanguageCode.validate(value: DEFAULT_LANGUAGE)),
         home: SplashScreen(),
       );
     });

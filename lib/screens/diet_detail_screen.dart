@@ -25,7 +25,7 @@ class DietDetailScreen extends StatefulWidget {
   final bool? isCategory;
   final bool? isFeatured;
 
-  DietDetailScreen({
+  const DietDetailScreen({super.key, 
     this.dietModel,
     this.onCall,
     this.isFeatured,
@@ -185,13 +185,13 @@ class _DietDetailScreenState extends State<DietDetailScreen> {
                       8.height,
                       Row(
                         children: [
-                          getVitamins(ic_calories, widget.dietModel!.calories.validate() + " " + languages.lblKcal, languages.lblCalories).expand(),
+                          getVitamins(ic_calories, "${widget.dietModel!.calories.validate()} ${languages.lblKcal}", languages.lblCalories).expand(),
                           dividerHorizontalLine(),
-                          getVitamins(ic_carbs, widget.dietModel!.carbs.validate() + " ${languages.lblG}", languages.lblCarbs).expand(),
+                          getVitamins(ic_carbs, "${widget.dietModel!.carbs.validate()} ${languages.lblG}", languages.lblCarbs).expand(),
                           dividerHorizontalLine(),
-                          getVitamins(ic_fat, widget.dietModel!.fat.validate() + " ${languages.lblG}", languages.lblFat).expand(),
+                          getVitamins(ic_fat, "${widget.dietModel!.fat.validate()} ${languages.lblG}", languages.lblFat).expand(),
                           dividerHorizontalLine(),
-                          getVitamins(ic_protein, widget.dietModel!.protein.validate() + " ${languages.lblG}", languages.lblProtein).expand(),
+                          getVitamins(ic_protein, "${widget.dietModel!.protein.validate()} ${languages.lblG}", languages.lblProtein).expand(),
                         ],
                       ).paddingSymmetric(horizontal: 10, vertical: 8),
                       8.height,

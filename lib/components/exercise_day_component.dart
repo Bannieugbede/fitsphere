@@ -16,7 +16,7 @@ class ExerciseDayComponent extends StatefulWidget {
   final DayExerciseModel? mDayExerciseModel;
   final List<String>? mSets;
 
-  ExerciseDayComponent({this.mDayExerciseModel, this.mSets});
+  const ExerciseDayComponent({super.key, this.mDayExerciseModel, this.mSets});
 
   @override
   ExerciseDayComponentState createState() => ExerciseDayComponentState();
@@ -47,7 +47,7 @@ class ExerciseDayComponentState extends State<ExerciseDayComponent> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      if (widget.mDayExerciseModel!.exercise!.type == DURATION) Text(widget.mDayExerciseModel!.exercise!.duration.toString() + " " + languages.lblDuration, style: secondaryTextStyle(size: 12)),
+                      if (widget.mDayExerciseModel!.exercise!.type == DURATION) Text("${widget.mDayExerciseModel!.exercise!.duration} ${languages.lblDuration}", style: secondaryTextStyle(size: 12)),
                       if (widget.mDayExerciseModel!.exercise!.type == SETS) Text(widget.mSets!.join(" ").toString(), style: secondaryTextStyle(size: 12)),
                       if (widget.mDayExerciseModel!.exercise!.isPremium == 1) mPro()
                     ],

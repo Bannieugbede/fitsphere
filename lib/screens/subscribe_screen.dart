@@ -168,8 +168,8 @@ class _SubscribeScreenState extends State<SubscribeScreen> {
                                             ),
                                             2.width,
                                             mSubscriptionListNew[index].durationUnit.toString() == "monthly"
-                                                ? Text("/ " + mSubscriptionListNew[index].duration.toString().validate() + " " + languages.lblMonth, style: primaryTextStyle())
-                                                : Text("/ " + mSubscriptionListNew[index].duration.toString().validate() + " " + languages.lblYear.capitalizeFirstLetter(), style: primaryTextStyle()),
+                                                ? Text("/ ${mSubscriptionListNew[index].duration.toString().validate()} ${languages.lblMonth}", style: primaryTextStyle())
+                                                : Text("/ ${mSubscriptionListNew[index].duration.toString().validate()} ${languages.lblYear.capitalizeFirstLetter()}", style: primaryTextStyle()),
                                           ],
                                         ),
                                       ]),

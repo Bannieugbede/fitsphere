@@ -267,7 +267,7 @@ class _FilterWorkoutScreenState extends State<FilterWorkoutScreen> {
                                         Row(
                                           children: [
                                             Container(margin: EdgeInsets.only(right: 6), height: 6, width: 6, decoration: boxDecorationWithRoundedCorners(boxShape: BoxShape.circle, backgroundColor: white)),
-                                            Text('${mWorkoutList[i].workoutTypeTitle.validate()}', style: secondaryTextStyle(color: white)),
+                                            Text(mWorkoutList[i].workoutTypeTitle.validate(), style: secondaryTextStyle(color: white)),
                                             8.width,
                                             Container(height: 14, width: 2, color: primaryColor),
                                             8.width,

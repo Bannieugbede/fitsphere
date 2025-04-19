@@ -31,7 +31,8 @@ class SubscriptionDetailScreen extends StatefulWidget {
   const SubscriptionDetailScreen({super.key, this.mList});
 
   @override
-  State<SubscriptionDetailScreen> createState() => _SubscriptionDetailScreenState();
+  State<SubscriptionDetailScreen> createState() =>
+      _SubscriptionDetailScreenState();
 }
 
 class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
@@ -53,7 +54,9 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
       init();
     });
     scrollController.addListener(() {
-      if (scrollController.position.pixels == scrollController.position.maxScrollExtent && !appStore.isLoading) {
+      if (scrollController.position.pixels ==
+              scrollController.position.maxScrollExtent &&
+          !appStore.isLoading) {
         if (page < numPage!) {
           page++;
           init();
@@ -105,11 +108,11 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
   Color getTextColor(String? state) {
     switch (state) {
       case ACTIVE:
-        return GreenColor;
+        return greenColor;
       case INACTIVE:
         return Colors.grey;
       case CANCELLED:
-        return RedColor;
+        return redColor;
       case EXPIRED:
         return YellowColor;
       default:
@@ -120,11 +123,11 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
   Color getBgColor(String? state) {
     switch (state) {
       case ACTIVE:
-        return GreenColor.withOpacity(0.15);
+        return greenColor.withOpacity(0.15);
       case INACTIVE:
         return Colors.grey.withOpacity(0.10);
       case CANCELLED:
-        return RedColor.withOpacity(0.10);
+        return redColor.withOpacity(0.10);
       case EXPIRED:
         return YellowColor.withOpacity(0.5);
       default:
@@ -145,13 +148,26 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(45),
             child: Container(
-              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: context.dividerColor))),
+              decoration: BoxDecoration(
+                  border:
+                      Border(bottom: BorderSide(color: context.dividerColor))),
               child: Row(
                 children: [
                   Container(
                     padding: EdgeInsets.only(bottom: 8),
-                    decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 1.5, color: select ? primaryColor : Colors.transparent))),
-                    child: Text(languages.lblActive, style: boldTextStyle(color: select ? primaryColor : textSecondaryColorGlobal)).center(),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                width: 1.5,
+                                color: select
+                                    ? primaryColor
+                                    : Colors.transparent))),
+                    child: Text(languages.lblActive,
+                            style: boldTextStyle(
+                                color: select
+                                    ? primaryColor
+                                    : textSecondaryColorGlobal))
+                        .center(),
                   ).onTap(() {
                     setState(() {
                       select = !select;
@@ -159,8 +175,19 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                   }).expand(),
                   Container(
                     padding: EdgeInsets.only(bottom: 8),
-                    decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 1.5, color: select ? Colors.transparent : primaryColor))),
-                    child: Text(languages.lblHistory, style: boldTextStyle(color: select ? textSecondaryColorGlobal : primaryColor)).center(),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                width: 1.5,
+                                color: select
+                                    ? Colors.transparent
+                                    : primaryColor))),
+                    child: Text(languages.lblHistory,
+                            style: boldTextStyle(
+                                color: select
+                                    ? textSecondaryColorGlobal
+                                    : primaryColor))
+                        .center(),
                   ).onTap(() {
                     setState(() {
                       select = !select;
@@ -171,21 +198,28 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
             ),
           )),
       body: select
-          ? userStore.subscriptionDetail!.subscriptionPlan == null || userStore.subscriptionDetail!.subscriptionPlan!.status == "inactive"
+          ? userStore.subscriptionDetail!.subscriptionPlan == null ||
+                  userStore.subscriptionDetail!.subscriptionPlan!.status ==
+                      "inactive"
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(no_data_found, height: context.height() * 0.2, width: context.width() * 0.4),
+                    Image.asset(no_data_found,
+                        height: context.height() * 0.2,
+                        width: context.width() * 0.4),
                     20.height,
-                    Text(languages.lblSubscriptionMsg, style: boldTextStyle(size: 16, color: textSecondaryColorGlobal)),
+                    Text(languages.lblSubscriptionMsg,
+                        style: boldTextStyle(
+                            size: 16, color: textSecondaryColorGlobal)),
                     50.height,
                     AppButton(
                       text: languages.lblViewPlans,
                       width: context.width(),
                       color: primaryColor,
                       onTap: () {
-                        SubscribeScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Fade);
+                        SubscribeScreen().launch(context,
+                            pageRouteAnimation: PageRouteAnimation.Fade);
                       },
                     ).paddingAll(16)
                   ],
@@ -196,26 +230,48 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                       16.height,
                       Container(
                         padding: EdgeInsets.all(16),
-                        decoration: boxDecorationWithRoundedCorners(backgroundColor: appStore.isDarkMode ? cardDarkColor : GreenColor.withOpacity(0.10)),
+                        decoration: boxDecorationWithRoundedCorners(
+                            backgroundColor: appStore.isDarkMode
+                                ? cardDarkColor
+                                : greenColor.withOpacity(0.10)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(userStore.subscriptionDetail!.subscriptionPlan!.packageName.validate(), style: boldTextStyle()).expand(),
-                                PriceWidget(price: userStore.subscriptionDetail!.subscriptionPlan!.totalAmount.validate().toStringAsFixed(2), color: primaryColor, textStyle: boldTextStyle(color: primaryColor, size: 20)),
+                                Text(
+                                        userStore.subscriptionDetail!
+                                            .subscriptionPlan!.packageName
+                                            .validate(),
+                                        style: boldTextStyle())
+                                    .expand(),
+                                PriceWidget(
+                                    price: userStore.subscriptionDetail!
+                                        .subscriptionPlan!.totalAmount
+                                        .validate()
+                                        .toStringAsFixed(2),
+                                    color: primaryColor,
+                                    textStyle: boldTextStyle(
+                                        color: primaryColor, size: 20)),
                               ],
                             ),
                             Text(
-                                languages.lblYourPlanValid +
-                                    " " +
-                                    parseDocumentDate(DateTime.parse(userStore.subscriptionDetail!.subscriptionPlan!.subscriptionStartDate.validate())) +
-                                    " ${languages.lblTo} " +
-                                    parseDocumentDate(DateTime.parse(userStore.subscriptionDetail!.subscriptionPlan!.subscriptionEndDate.validate())),
-                                style: primaryTextStyle(color: primaryColor, size: 12)),
+                                "${languages.lblYourPlanValid} ${parseDocumentDate(DateTime.parse(userStore.subscriptionDetail!.subscriptionPlan!.subscriptionStartDate.validate()))} ${languages.lblTo} ${parseDocumentDate(DateTime.parse(userStore.subscriptionDetail!.subscriptionPlan!.subscriptionEndDate.validate()))}",
+                                style: primaryTextStyle(
+                                    color: primaryColor, size: 12)),
                             8.height,
-                            Container(child: htmlWidget(context, userStore.subscriptionDetail!.subscriptionPlan!.packageData!.description.validate(), textPrimaryColorGlobal, secondaryTextStyle())),
+                            Container(
+                                child: htmlWidget(
+                                    context,
+                                    userStore
+                                        .subscriptionDetail!
+                                        .subscriptionPlan!
+                                        .packageData!
+                                        .description
+                                        .validate(),
+                                    textPrimaryColorGlobal,
+                                    secondaryTextStyle())),
                             16.height,
                           ],
                         ),
@@ -244,16 +300,29 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                     return Container(
                       padding: EdgeInsets.all(16),
                       margin: EdgeInsets.only(bottom: 16),
-                      decoration: boxDecorationWithRoundedCorners(backgroundColor: appStore.isDarkMode ? cardDarkColor : getBgColor(mSubscriptionPlanList[index].status.validate())),
+                      decoration: boxDecorationWithRoundedCorners(
+                          backgroundColor: appStore.isDarkMode
+                              ? cardDarkColor
+                              : getBgColor(mSubscriptionPlanList[index]
+                                  .status
+                                  .validate())),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(mSubscriptionPlanList[index].packageName.validate(), style: boldTextStyle()).expand(),
+                              Text(
+                                      mSubscriptionPlanList[index]
+                                          .packageName
+                                          .validate(),
+                                      style: boldTextStyle())
+                                  .expand(),
                               PriceWidget(
-                                price: mSubscriptionPlanList[index].totalAmount.validate().toStringAsFixed(2),
+                                price: mSubscriptionPlanList[index]
+                                    .totalAmount
+                                    .validate()
+                                    .toStringAsFixed(2),
                                 color: primaryColor,
                                 textStyle: boldTextStyle(),
                               ),
@@ -261,9 +330,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                           ),
                           8.height,
                           Text(
-                            parseDocumentDate(DateTime.parse(mSubscriptionPlanList[index].subscriptionStartDate.validate())) +
-                                " ${languages.lblTo} " +
-                                parseDocumentDate(DateTime.parse(mSubscriptionPlanList[index].subscriptionEndDate.validate())),
+                            "${parseDocumentDate(DateTime.parse(mSubscriptionPlanList[index].subscriptionStartDate.validate()))} ${languages.lblTo} ${parseDocumentDate(DateTime.parse(mSubscriptionPlanList[index].subscriptionEndDate.validate()))}",
                             style: secondaryTextStyle(),
                           ),
                           8.height,
@@ -272,12 +339,33 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Container(height: 6, width: 6, decoration: boxDecorationWithRoundedCorners(boxShape: BoxShape.circle, backgroundColor: textSecondaryColorGlobal)),
+                                  Container(
+                                      height: 6,
+                                      width: 6,
+                                      decoration:
+                                          boxDecorationWithRoundedCorners(
+                                              boxShape: BoxShape.circle,
+                                              backgroundColor:
+                                                  textSecondaryColorGlobal)),
                                   6.width,
-                                  Text(mSubscriptionPlanList[index].paymentType.validate().capitalizeFirstLetter(), style: primaryTextStyle()),
+                                  Text(
+                                      mSubscriptionPlanList[index]
+                                          .paymentType
+                                          .validate()
+                                          .capitalizeFirstLetter(),
+                                      style: primaryTextStyle()),
                                 ],
                               ).expand(),
-                              Text(mSubscriptionPlanList[index].status.validate().capitalizeFirstLetter(), style: boldTextStyle(color: getTextColor(mSubscriptionPlanList[index].status.validate())))
+                              Text(
+                                  mSubscriptionPlanList[index]
+                                      .status
+                                      .validate()
+                                      .capitalizeFirstLetter(),
+                                  style: boldTextStyle(
+                                      color: getTextColor(
+                                          mSubscriptionPlanList[index]
+                                              .status
+                                              .validate())))
                             ],
                           )
                         ],
@@ -285,7 +373,10 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                     );
                   },
                 )
-              : SizedBox(height: context.height() * 0.65, child: NoDataScreen().center()).visible(!appStore.isLoading),
+              : SizedBox(
+                      height: context.height() * 0.65,
+                      child: NoDataScreen().center())
+                  .visible(!appStore.isLoading),
     );
   }
 }

@@ -13,7 +13,7 @@ class ViewAllBlogScreen extends StatefulWidget {
   static String tag = '/ViewAllBlogScreen';
   final bool? isFeatured;
 
-  ViewAllBlogScreen({this.isFeatured = false});
+  const ViewAllBlogScreen({super.key, this.isFeatured = false});
 
   @override
   ViewAllBlogScreenState createState() => ViewAllBlogScreenState();

@@ -19,6 +19,8 @@ import '../utils/app_images.dart';
 class ProgressSettingScreen extends StatefulWidget {
   static String tag = '/ProgressSetting';
 
+  const ProgressSettingScreen({super.key});
+
   @override
   ProgressSettingScreenState createState() => ProgressSettingScreenState();
 }
@@ -60,14 +62,17 @@ class ProgressSettingScreenState extends State<ProgressSettingScreen> {
                       : appStore.isDarkMode
                           ? context.scaffoldBackgroundColor
                           : cardLightColor,
-                  border: Border.all(color: data.isEnable == true ? primaryColor.withOpacity(0.80) : GreyLightColor)),
+                  border: Border.all(
+                      color: data.isEnable == true
+                          ? primaryColor.withOpacity(0.80)
+                          : GreyLightColor)),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${data.name.validate()}',
+                        data.name.validate(),
                         style: boldTextStyle(
                             color: data.isEnable == true
                                 ? Colors.white
@@ -75,7 +80,11 @@ class ProgressSettingScreenState extends State<ProgressSettingScreen> {
                                     ? Colors.white
                                     : Colors.black),
                       ),
-                      data.isEnable == true ? Image.asset(ic_radio_fill, height: 20, width: 20, color: Colors.white) : Image.asset(ic_radio, color: primaryColor, height: 20, width: 20),
+                      data.isEnable == true
+                          ? Image.asset(ic_radio_fill,
+                              height: 20, width: 20, color: Colors.white)
+                          : Image.asset(ic_radio,
+                              color: primaryColor, height: 20, width: 20),
                     ],
                   ),
                   4.height,
@@ -85,10 +94,13 @@ class ProgressSettingScreenState extends State<ProgressSettingScreen> {
                 ProgressSettingModel mSetting = ProgressSettingModel();
                 mSetting.id = data.id;
                 mSetting.name = data.name;
-                mSetting.isEnable = userStore.mProgressList[index].isEnable == true ? false : true;
+                mSetting.isEnable =
+                    userStore.mProgressList[index].isEnable == true
+                        ? false
+                        : true;
                 userStore.updateProgress(mSetting);
                 LiveStream().emit(PROGRESS_SETTING);
-                setState(() { });
+                setState(() {});
               }),
             );
           },

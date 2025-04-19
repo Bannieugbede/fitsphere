@@ -20,7 +20,7 @@ class ExerciseDurationScreen1 extends StatefulWidget {
   static String tag = '/ExerciseDurationScreen';
   final ExerciseDetailResponse? mExerciseModel;
 
-  ExerciseDurationScreen1(this.mExerciseModel);
+  const ExerciseDurationScreen1(this.mExerciseModel, {super.key});
 
   @override
   ExerciseDurationScreen1State createState() => ExerciseDurationScreen1State();
@@ -79,7 +79,7 @@ class ExerciseDurationScreen1State extends State<ExerciseDurationScreen1> {
       finish(context);
     }
 
-    this.setState(() {});
+    setState(() {});
   }
 
   _start() {
@@ -116,9 +116,9 @@ class ExerciseDurationScreen1State extends State<ExerciseDurationScreen1> {
   Widget mData(List<Sets> strings) {
     List<Widget> list = [];
     for (var i = 0; i < strings.length; i++) {
-      list.add(new Text(strings[i].time.toString()));
+      list.add(Text(strings[i].time.toString()));
     }
-    return new Row(children: list);
+    return Row(children: list);
   }
 
   @override

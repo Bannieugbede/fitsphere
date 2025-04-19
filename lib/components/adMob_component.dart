@@ -12,11 +12,11 @@ adShow() async {
     return;
   }
   interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-    onAdShowedFullScreenContent: (InterstitialAd ad) => print('ad onAdShowedFullScreenContent.'),
+    onAdShowedFullScreenContent: (InterstitialAd ad) =>
+        print('ad onAdShowedFullScreenContent.'),
     onAdDismissedFullScreenContent: (InterstitialAd ad) {
       print('$ad onAdDismissedFullScreenContent.');
       ad.dispose();
-
     },
     onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
       print('$ad onAdFailedToShowFullScreenContent: $error');
@@ -27,7 +27,7 @@ adShow() async {
   interstitialAd!.show();
 }
 
- createInterstitialAd() {
+createInterstitialAd() {
   InterstitialAd.load(
     adUnitId: kReleaseMode
         ? getInterstitialAdUnitId()!
@@ -66,8 +66,8 @@ String? getBannerAdUnitId() {
   return null;
 }
 
-Widget showBannerAds( BuildContext context) {
-  return Container(
+Widget showBannerAds(BuildContext context) {
+  return SizedBox(
     height: 50,
     width: MediaQuery.of(context).size.width,
     child: AdWidget(

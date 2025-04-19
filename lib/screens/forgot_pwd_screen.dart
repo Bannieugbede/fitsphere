@@ -19,6 +19,8 @@ import '../utils/app_common.dart';
 import '../utils/app_images.dart';
 
 class ForgotPwdScreen extends StatefulWidget {
+  const ForgotPwdScreen({super.key});
+
   @override
   _ForgotPwdScreenState createState() => _ForgotPwdScreenState();
 }

@@ -20,6 +20,8 @@ import '../utils/app_common.dart';
 import '../utils/app_constants.dart';
 
 class SignUpStep4Component extends StatefulWidget {
+  const SignUpStep4Component({super.key});
+
   @override
   _SignUpStep4ComponentState createState() => _SignUpStep4ComponentState();
 }
@@ -76,7 +78,10 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
                   ? context.cardColor
                   : GreyLightColor),
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      child: Text(value!, style: secondaryTextStyle(color: mHeight == index ? Colors.white : textSecondaryColorGlobal)),
+      child: Text(value!,
+          style: secondaryTextStyle(
+              color:
+                  mHeight == index ? Colors.white : textSecondaryColorGlobal)),
     ).onTap(() {
       hideKeyboard(context);
       mHeight = index;
@@ -99,21 +104,29 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
 
   //Convert Feet to Cm
   void convertFeetToCm() {
-    double a = double.parse(mHeightCont.text.isEmptyOrNull ? "0.0" : mHeightCont.text.validate()) * 30.48;
+    double a = double.parse(mHeightCont.text.isEmptyOrNull
+            ? "0.0"
+            : mHeightCont.text.validate()) *
+        30.48;
     if (!mHeightCont.text.isEmptyOrNull) {
       mHeightCont.text = a.toStringAsFixed(2).toString();
     }
-    mHeightCont.selection = TextSelection.fromPosition(TextPosition(offset: mHeightCont.text.length));
+    mHeightCont.selection = TextSelection.fromPosition(
+        TextPosition(offset: mHeightCont.text.length));
     print(a.toStringAsFixed(2).toString());
   }
 
   //Convert CM to Feet
   void convertCMToFeet() {
-    double a = double.parse(mHeightCont.text.isEmptyOrNull ? "0.0" : mHeightCont.text.validate()) * 0.0328;
+    double a = double.parse(mHeightCont.text.isEmptyOrNull
+            ? "0.0"
+            : mHeightCont.text.validate()) *
+        0.0328;
     if (!mHeightCont.text.isEmptyOrNull) {
       mHeightCont.text = a.toStringAsFixed(2).toString();
     }
-    mHeightCont.selection = TextSelection.fromPosition(TextPosition(offset: mHeightCont.text.length));
+    mHeightCont.selection = TextSelection.fromPosition(
+        TextPosition(offset: mHeightCont.text.length));
     print(a.toStringAsFixed(2).toString());
   }
 
@@ -127,7 +140,10 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
                   ? context.cardColor
                   : GreyLightColor),
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      child: Text(value!, style: secondaryTextStyle(color: mWeight == index ? Colors.white : textSecondaryColorGlobal)),
+      child: Text(value!,
+          style: secondaryTextStyle(
+              color:
+                  mWeight == index ? Colors.white : textSecondaryColorGlobal)),
     ).onTap(() {
       mWeight = index;
       hideKeyboard(context);
@@ -150,20 +166,28 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
 
 //Convert lbs to kg
   void convertLbsToKg() {
-    double a = double.parse(mWeightCont.text.isEmptyOrNull ? "0.0" : mWeightCont.text.validate()) * 0.45359237;
+    double a = double.parse(mWeightCont.text.isEmptyOrNull
+            ? "0.0"
+            : mWeightCont.text.validate()) *
+        0.45359237;
     if (!mWeightCont.text.isEmptyOrNull) {
       mWeightCont.text = a.toStringAsFixed(2).toString();
     }
-    mWeightCont.selection = TextSelection.fromPosition(TextPosition(offset: mWeightCont.text.length));
+    mWeightCont.selection = TextSelection.fromPosition(
+        TextPosition(offset: mWeightCont.text.length));
     print(a.toStringAsFixed(2).toString());
   }
 
   void convertKgToLbs() {
-    double a = double.parse(mWeightCont.text.isEmptyOrNull ? "0.0" : mWeightCont.text.validate()) * 2.2046;
+    double a = double.parse(mWeightCont.text.isEmptyOrNull
+            ? "0.0"
+            : mWeightCont.text.validate()) *
+        2.2046;
     if (!mWeightCont.text.isEmptyOrNull) {
       mWeightCont.text = a.toStringAsFixed(2).toString();
     }
-    mWeightCont.selection = TextSelection.fromPosition(TextPosition(offset: mWeightCont.text.length));
+    mWeightCont.selection = TextSelection.fromPosition(
+        TextPosition(offset: mWeightCont.text.length));
     print(a.round().toString());
   }
 
@@ -176,8 +200,8 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
     userProfile.weight = userStore.weight.validate();
     userProfile.weightUnit = userStore.weightUnit.validate();
     Map<String, dynamic> req;
-    if(getBoolAsync(IS_OTP) != true){
-       req = {
+    if (getBoolAsync(IS_OTP) != true) {
+      req = {
         'first_name': userStore.fName.validate(),
         'last_name': userStore.lName.validate(),
         'username': userStore.email.validate(),
@@ -190,8 +214,7 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
         'user_profile': userProfile,
         "player_id": getStringAsync(PLAYER_ID).validate(),
       };
-    }
-    else{
+    } else {
       req = {
         'first_name': userStore.fName.validate(),
         'last_name': userStore.lName.validate(),
@@ -216,7 +239,7 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
       getUSerDetail(context, value.data!.id).then((value) {
         DashboardScreen().launch(context, isNewTask: true);
       }).catchError((e) {
-        print("error=>" + e.toString());
+        print("error=>$e");
       });
     }).catchError((e) {
       appStore.setLoading(false);
@@ -235,9 +258,11 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(languages.lblLetUsKnowBetter, style: boldTextStyle(size: 22)),
+                Text(languages.lblLetUsKnowBetter,
+                    style: boldTextStyle(size: 22)),
                 24.height,
-                Text(languages.lblWeight, style: secondaryTextStyle(color: textPrimaryColorGlobal)),
+                Text(languages.lblWeight,
+                    style: secondaryTextStyle(color: textPrimaryColorGlobal)),
                 4.height,
                 AppTextField(
                   onChanged: (_) {
@@ -252,7 +277,10 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
                   focus: mWeightFocus,
                   nextFocus: mHeightFocus,
                   suffix: Container(
-                    decoration: boxDecorationWithRoundedCorners(backgroundColor: appStore.isDarkMode ? context.cardColor : GreyLightColor),
+                    decoration: boxDecorationWithRoundedCorners(
+                        backgroundColor: appStore.isDarkMode
+                            ? context.cardColor
+                            : GreyLightColor),
                     padding: EdgeInsets.all(8),
                     margin: EdgeInsets.all(8),
                     child: Row(
@@ -264,10 +292,12 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
                       ],
                     ),
                   ),
-                  decoration: defaultInputDecoration(context, label: languages.lblEnterWeight),
+                  decoration: defaultInputDecoration(context,
+                      label: languages.lblEnterWeight),
                 ),
                 16.height,
-                Text(languages.lblHeight, style: secondaryTextStyle(color: textPrimaryColorGlobal)),
+                Text(languages.lblHeight,
+                    style: secondaryTextStyle(color: textPrimaryColorGlobal)),
                 4.height,
                 AppTextField(
                   onChanged: (_) {
@@ -281,7 +311,10 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
                   isValidationRequired: true,
                   focus: mHeightFocus,
                   suffix: Container(
-                    decoration: boxDecorationWithRoundedCorners(backgroundColor: appStore.isDarkMode ? context.cardColor : GreyLightColor),
+                    decoration: boxDecorationWithRoundedCorners(
+                        backgroundColor: appStore.isDarkMode
+                            ? context.cardColor
+                            : GreyLightColor),
                     padding: EdgeInsets.all(8),
                     margin: EdgeInsets.all(8),
                     child: Row(
@@ -293,7 +326,8 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
                       ],
                     ),
                   ),
-                  decoration: defaultInputDecoration(context, label: languages.lblEnterHeight),
+                  decoration: defaultInputDecoration(context,
+                      label: languages.lblEnterHeight),
                 ),
                 24.height,
                 AppButton(
@@ -304,7 +338,8 @@ class _SignUpStep4ComponentState extends State<SignUpStep4Component> {
                     if (mFormKey.currentState!.validate()) {
                       userStore.setHeight(mHeightCont.text.validate());
                       userStore.setWeight(mWeightCont.text.validate());
-                      userStore.setWeightUnit(mWeight == 0 ? LBS : METRICS_WEIGHT_UNIT);
+                      userStore.setWeightUnit(
+                          mWeight == 0 ? LBS : METRICS_WEIGHT_UNIT);
                       userStore.setHeightUnit(mHeight == 0 ? FEET : METRICS_CM);
                       saveData();
                       setState(() {});

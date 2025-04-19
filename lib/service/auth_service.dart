@@ -182,7 +182,7 @@ void socialLogin(req, BuildContext context) async {
     getUSerDetail(context, res.data!.id.validate()).then((value) {
       DashboardScreen().launch(context, isNewTask: true);
     }).catchError((e) {
-      print("error=>" + e.toString());
+      print("error=>$e");
     });
   }).catchError((error) {
     appStore.setLoading(false);
@@ -226,7 +226,7 @@ Future<void> saveAppleDataWithoutEmail(AuthorizationResult result, String? acces
     getUSerDetail(context, value.data!.id.validate()).then((value) {
       DashboardScreen().launch(context, isNewTask: true);
     }).catchError((e) {
-      print("error=>" + e.toString());
+      print("error=>$e");
     });
   }).catchError((e) {
     log("e->" + e);

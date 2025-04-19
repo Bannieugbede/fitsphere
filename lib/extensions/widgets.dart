@@ -229,7 +229,7 @@ class PriceWidget extends StatefulWidget {
   Color? color;
   TextStyle? textStyle;
 
-  PriceWidget({Key? key, this.price, this.color, this.size, this.textStyle}) : super(key: key);
+  PriceWidget({super.key, this.price, this.color, this.size, this.textStyle});
 
   @override
   PriceWidgetState createState() => PriceWidgetState();
@@ -254,10 +254,10 @@ class PriceWidgetState extends State<PriceWidget> {
   Widget build(BuildContext context) {
     if (userStore.currencyPosition == "left") {
       return Text('$currency ${widget.price.toString().replaceAll(".00", "")}',
-          style: widget.textStyle ?? GoogleFonts.inter(fontSize: widget.size, color: widget.color != null ? widget.color : primaryColor, fontWeight: FontWeight.w600));
+          style: widget.textStyle ?? GoogleFonts.inter(fontSize: widget.size, color: widget.color ?? primaryColor, fontWeight: FontWeight.w600));
     } else {
       return Text('${widget.price.toString().replaceAll(".00", "")} $currency',
-          style: widget.textStyle ?? GoogleFonts.inter(fontSize: widget.size, color: widget.color != null ? widget.color : primaryColor, fontWeight: FontWeight.w600));
+          style: widget.textStyle ?? GoogleFonts.inter(fontSize: widget.size, color: widget.color ?? primaryColor, fontWeight: FontWeight.w600));
     }
   }
 }

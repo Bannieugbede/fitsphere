@@ -69,14 +69,6 @@ class DiagonalPathClipperTwo extends CustomClipper<Path> {
 
 Widget outlineIconButton(BuildContext context, {required String text, String? icon, Function()? onTap, Color? textColor}) {
   return OutlinedButton(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        if (icon != null) ImageIcon(AssetImage(icon), color: appStore.isDarkMode ? Colors.white : primaryColor, size: 24),
-        if (icon != null) SizedBox(width: 8),
-        Text(text, style: primaryTextStyle(color: textColor ?? null, size: 14)),
-      ],
-    ),
     onPressed: onTap ?? () {},
     style: OutlinedButton.styleFrom(
       side: BorderSide(color: textColor ?? (appStore.isDarkMode ? Colors.white38 : primaryColor), style: BorderStyle.solid),
@@ -86,6 +78,14 @@ Widget outlineIconButton(BuildContext context, {required String text, String? ic
       ),
       backgroundColor: Colors.transparent,
       elevation: 0,
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (icon != null) ImageIcon(AssetImage(icon), color: appStore.isDarkMode ? Colors.white : primaryColor, size: 24),
+        if (icon != null) SizedBox(width: 8),
+        Text(text, style: primaryTextStyle(color: textColor ?? null, size: 14)),
+      ],
     ),
   );
 }
@@ -270,10 +270,10 @@ Future<void> getUSerDetail(BuildContext context, int? id) async {
     userStore.setHeightUnit(value.data!.userProfile!.heightUnit.validate());
     userStore.setSubscribe(value.subscriptionDetail!.isSubscribe.validate());
     userStore.setSubscriptionDetail(value.subscriptionDetail!);
-    print("user data->"+value.toJson().toString());
+    print("user data->${value.toJson()}");
     appStore.setLoading(false);
   }).catchError((e) {
-    print("error-"+e.toString());
+    print("error-$e");
     appStore.setLoading(false);
   });
 }

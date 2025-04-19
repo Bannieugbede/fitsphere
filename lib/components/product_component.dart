@@ -17,7 +17,7 @@ class ProductComponent extends StatefulWidget {
   final ProductModel? mProductModel;
   final Function? onCall;
 
-  ProductComponent({this.mProductModel, this.onCall});
+  const ProductComponent({super.key, this.mProductModel, this.onCall});
 
   @override
   ProductComponentState createState() => ProductComponentState();
@@ -30,10 +30,19 @@ class ProductComponentState extends State<ProductComponent> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          decoration: boxDecorationWithRoundedCorners(borderRadius: radius(12), backgroundColor: GreyLightColor),
-          child: cachedImage(widget.mProductModel!.productImage.validate(), height: 155, fit: BoxFit.contain, width: (context.width() - 50) / 2).cornerRadiusWithClipRRect(defaultRadius),
+          decoration: boxDecorationWithRoundedCorners(
+              borderRadius: radius(12), backgroundColor: GreyLightColor),
+          child: cachedImage(widget.mProductModel!.productImage.validate(),
+                  height: 155,
+                  fit: BoxFit.contain,
+                  width: (context.width() - 50) / 2)
+              .cornerRadiusWithClipRRect(defaultRadius),
         ),
-        Text(widget.mProductModel!.title.validate(), style: primaryTextStyle(color: appStore.isDarkMode ? Colors.white : Colors.black), maxLines: 2).paddingSymmetric(horizontal: 4, vertical: 8)
+        Text(widget.mProductModel!.title.validate(),
+                style: primaryTextStyle(
+                    color: appStore.isDarkMode ? Colors.white : Colors.black),
+                maxLines: 2)
+            .paddingSymmetric(horizontal: 4, vertical: 8)
       ],
     ).onTap(() {
       ProductDetailScreen(productModel: widget.mProductModel!).launch(context);

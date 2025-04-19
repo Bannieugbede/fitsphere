@@ -12,6 +12,8 @@ import '../models/category_diet_response.dart';
 import '../network/rest_api.dart';
 
 class ViewDietCategoryScreen extends StatefulWidget {
+  const ViewDietCategoryScreen({super.key});
+
   @override
   _ViewDietCategoryScreenState createState() => _ViewDietCategoryScreenState();
 }

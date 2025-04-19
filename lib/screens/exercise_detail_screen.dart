@@ -28,7 +28,7 @@ class ExerciseDetailScreen extends StatefulWidget {
   final int? mExerciseId;
   final String? mExerciseName;
 
-  ExerciseDetailScreen({this.mExerciseId, this.mExerciseName});
+  const ExerciseDetailScreen({super.key, this.mExerciseId, this.mExerciseName});
 
   @override
   _ExerciseDetailScreenState createState() => _ExerciseDetailScreenState();
@@ -95,36 +95,55 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
             children: [
               Text(value, style: boldTextStyle()),
               2.height,
-              Text("- " + value2.validate() + languages.lblKg, style: primaryTextStyle(size: 14)),
+              Text("- ${value2.validate()}${languages.lblKg}",
+                  style: primaryTextStyle(size: 14)),
             ],
           );
   }
 
   Widget mSets1() {
     if (mExerciseModel!.data!.sets!.length == 1) {
-      return mSetText(mExerciseModel!.data!.based == "reps" ? mExerciseModel!.data!.sets!.first.reps.validate() + "x" : mExerciseModel!.data!.sets!.first.time.validate() + "s",
+      return mSetText(
+          mExerciseModel!.data!.based == "reps"
+              ? "${mExerciseModel!.data!.sets!.first.reps.validate()}x"
+              : "${mExerciseModel!.data!.sets!.first.time.validate()}s",
           value2: mExerciseModel!.data!.sets!.first.weight.validate());
     } else if (mExerciseModel!.data!.sets!.length == 2) {
       return Row(children: [
-        mSetText(mExerciseModel!.data!.based == "reps" ? mExerciseModel!.data!.sets!.first.reps.validate() + "x" : mExerciseModel!.data!.sets!.first.time.validate() + "s",
+        mSetText(
+                mExerciseModel!.data!.based == "reps"
+                    ? "${mExerciseModel!.data!.sets!.first.reps.validate()}x"
+                    : "${mExerciseModel!.data!.sets!.first.time.validate()}s",
                 value2: mExerciseModel!.data!.sets!.first.weight.validate())
             .expand(),
         dividerHorizontalLine(),
-        mSetText(mExerciseModel!.data!.based == "reps" ? mExerciseModel!.data!.sets![1].reps.validate() + "x" : mExerciseModel!.data!.sets![1].time.validate() + "s",
+        mSetText(
+                mExerciseModel!.data!.based == "reps"
+                    ? "${mExerciseModel!.data!.sets![1].reps.validate()}x"
+                    : "${mExerciseModel!.data!.sets![1].time.validate()}s",
                 value2: mExerciseModel!.data!.sets![1].weight.validate())
             .expand(),
       ]);
     } else if (mExerciseModel!.data!.sets!.length == 3) {
       return Row(children: [
-        mSetText(mExerciseModel!.data!.based == "reps" ? mExerciseModel!.data!.sets![0].reps.validate() + "x" : mExerciseModel!.data!.sets![0].time.validate() + "s",
+        mSetText(
+                mExerciseModel!.data!.based == "reps"
+                    ? "${mExerciseModel!.data!.sets![0].reps.validate()}x"
+                    : "${mExerciseModel!.data!.sets![0].time.validate()}s",
                 value2: mExerciseModel!.data!.sets![0].weight.validate())
             .expand(),
         dividerHorizontalLine(),
-        mSetText(mExerciseModel!.data!.based == "reps" ? mExerciseModel!.data!.sets![1].reps.validate() + "x" : mExerciseModel!.data!.sets![1].time.validate() + "s",
+        mSetText(
+                mExerciseModel!.data!.based == "reps"
+                    ? "${mExerciseModel!.data!.sets![1].reps.validate()}x"
+                    : "${mExerciseModel!.data!.sets![1].time.validate()}s",
                 value2: mExerciseModel!.data!.sets![1].weight.validate())
             .expand(),
         dividerHorizontalLine(),
-        mSetText(mExerciseModel!.data!.based == "reps" ? mExerciseModel!.data!.sets![2].reps.validate() + "x" : mExerciseModel!.data!.sets![2].time.validate() + "s",
+        mSetText(
+                mExerciseModel!.data!.based == "reps"
+                    ? "${mExerciseModel!.data!.sets![2].reps.validate()}x"
+                    : "${mExerciseModel!.data!.sets![2].time.validate()}s",
                 value2: mExerciseModel!.data!.sets![2].weight.validate())
             .expand(),
       ]);
@@ -135,7 +154,10 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
           return Row(
             children: [
               16.width,
-              mSetText(mExerciseModel!.data!.based == "reps" ? mExerciseModel!.data!.sets![index].reps.validate() + "x" : mExerciseModel!.data!.sets![index].time.toString() + "s",
+              mSetText(
+                  mExerciseModel!.data!.based == "reps"
+                      ? "${mExerciseModel!.data!.sets![index].reps.validate()}x"
+                      : "${mExerciseModel!.data!.sets![index].time}s",
                   value2: mExerciseModel!.data!.sets![index].weight.validate()),
               16.width,
               dividerHorizontalLine(),
@@ -149,20 +171,20 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
 
   Widget mSets2() {
     if (mExerciseModel!.data!.sets!.length == 1) {
-      return mSetText(mExerciseModel!.data!.sets!.first.rest.validate() + "s");
+      return mSetText("${mExerciseModel!.data!.sets!.first.rest.validate()}s");
     } else if (mExerciseModel!.data!.sets!.length == 2) {
       return Row(children: [
-        mSetText(mExerciseModel!.data!.sets![0].rest.validate() + "s").expand(),
+        mSetText("${mExerciseModel!.data!.sets![0].rest.validate()}s").expand(),
         dividerHorizontalLine(isSmall: true),
-        mSetText(mExerciseModel!.data!.sets![1].rest.validate() + "s").expand(),
+        mSetText("${mExerciseModel!.data!.sets![1].rest.validate()}s").expand(),
       ]);
     } else if (mExerciseModel!.data!.sets!.length == 3) {
       return Row(children: [
-        mSetText(mExerciseModel!.data!.sets![0].rest.validate() + "s").expand(),
+        mSetText("${mExerciseModel!.data!.sets![0].rest.validate()}s").expand(),
         dividerHorizontalLine(isSmall: true),
-        mSetText(mExerciseModel!.data!.sets![1].rest.validate() + "s").expand(),
+        mSetText("${mExerciseModel!.data!.sets![1].rest.validate()}s").expand(),
         dividerHorizontalLine(isSmall: true),
-        mSetText(mExerciseModel!.data!.sets![2].rest.validate() + "s").expand(),
+        mSetText("${mExerciseModel!.data!.sets![2].rest.validate()}s").expand(),
       ]);
     } else {
       return HorizontalList(
@@ -171,7 +193,8 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
           return Row(
             children: [
               16.width,
-              mSetText(mExerciseModel!.data!.sets![index].rest.validate() + "s"),
+              mSetText(
+                  "${mExerciseModel!.data!.sets![index].rest.validate()}s"),
               16.width,
               dividerHorizontalLine(isSmall: true),
               16.width,
@@ -191,16 +214,21 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget(widget.mExerciseName.validate(), context: context, actions: [
-        Image.asset(ic_menu, height: 24, width: 24, color: primaryColor).paddingRight(8).onTap(() {
-          TipsScreen(
-                  mExerciseVideo: mExerciseModel!.data!.videoUrl.validate(),
-                  mTips: mExerciseModel!.data!.tips.validate(),
-                  mExerciseImage: mExerciseModel!.data!.exerciseImage.validate(),
-                  mExerciseInstruction: mExerciseModel!.data!.instruction)
-              .launch(context);
-        })
-      ]),
+      appBar: appBarWidget(widget.mExerciseName.validate(),
+          context: context,
+          actions: [
+            Image.asset(ic_menu, height: 24, width: 24, color: primaryColor)
+                .paddingRight(8)
+                .onTap(() {
+              TipsScreen(
+                      mExerciseVideo: mExerciseModel!.data!.videoUrl.validate(),
+                      mTips: mExerciseModel!.data!.tips.validate(),
+                      mExerciseImage:
+                          mExerciseModel!.data!.exerciseImage.validate(),
+                      mExerciseInstruction: mExerciseModel!.data!.instruction)
+                  .launch(context);
+            })
+          ]),
       bottomNavigationBar: AppButton(
         color: primaryColor,
         margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -225,24 +253,44 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
                 children: [
                   Stack(
                     children: [
-                      mExerciseModel!.data!.videoUrl.validate().contains("https://youtu")
-                          ? AspectRatio(aspectRatio: 12 / 7, child: YoutubePlayerScreen(url: mExerciseModel!.data!.videoUrl.validate(), img: mExerciseModel!.data!.exerciseImage.validate()))
-                          : ChewieScreen(mExerciseModel!.data!.videoUrl.validate(), mExerciseModel!.data!.exerciseImage.validate()).center(),
+                      mExerciseModel!.data!.videoUrl
+                              .validate()
+                              .contains("https://youtu")
+                          ? AspectRatio(
+                              aspectRatio: 12 / 7,
+                              child: YoutubePlayerScreen(
+                                  url:
+                                      mExerciseModel!.data!.videoUrl.validate(),
+                                  img: mExerciseModel!.data!.exerciseImage
+                                      .validate()))
+                          : ChewieScreen(
+                                  mExerciseModel!.data!.videoUrl.validate(),
+                                  mExerciseModel!.data!.exerciseImage
+                                      .validate())
+                              .center(),
                       Positioned(
                         left: 16,
                         top: 16,
-                        child: mExerciseModel!.data!.isPremium == 1 ? mPro() : SizedBox(),
+                        child: mExerciseModel!.data!.isPremium == 1
+                            ? mPro()
+                            : SizedBox(),
                       )
                     ],
                   ),
                   16.height,
-                  getHeading(mExerciseModel!.data!.levelTitle.validate()).visible(!mExerciseModel!.data!.levelTitle.isEmptyOrNull),
+                  getHeading(mExerciseModel!.data!.levelTitle.validate())
+                      .visible(!mExerciseModel!.data!.levelTitle.isEmptyOrNull),
                   12.height,
                   if (mExerciseModel!.data!.type == SETS)
                     Container(
                       width: context.width(),
-                      decoration: boxDecorationWithRoundedCorners(borderRadius: radius(), backgroundColor: appStore.isDarkMode ? cardDarkColor : GreyLightColor.withOpacity(0.3)),
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                      decoration: boxDecorationWithRoundedCorners(
+                          borderRadius: radius(),
+                          backgroundColor: appStore.isDarkMode
+                              ? cardDarkColor
+                              : GreyLightColor.withOpacity(0.3)),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 6),
                       margin: EdgeInsets.symmetric(horizontal: 16),
                       child: mSets1(),
                     ),
@@ -250,22 +298,34 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
                   if (mExerciseModel!.data!.type == SETS)
                     Container(
                       width: context.width(),
-                      decoration: boxDecorationWithRoundedCorners(borderRadius: radius(), backgroundColor: appStore.isDarkMode ? cardDarkColor : GreyLightColor.withOpacity(0.3)),
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                      decoration: boxDecorationWithRoundedCorners(
+                          borderRadius: radius(),
+                          backgroundColor: appStore.isDarkMode
+                              ? cardDarkColor
+                              : GreyLightColor.withOpacity(0.3)),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 6),
                       margin: EdgeInsets.symmetric(horizontal: 16),
                       child: mSets2(),
                     ),
                   if (mExerciseModel!.data!.type == DURATION)
                     Container(
                       width: context.width(),
-                      decoration: boxDecorationWithRoundedCorners(borderRadius: radius(), backgroundColor: appStore.isDarkMode ? cardDarkColor : GreyLightColor.withOpacity(0.3)),
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                      decoration: boxDecorationWithRoundedCorners(
+                          borderRadius: radius(),
+                          backgroundColor: appStore.isDarkMode
+                              ? cardDarkColor
+                              : GreyLightColor.withOpacity(0.3)),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 14),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(mExerciseModel!.data!.duration.validate(), style: boldTextStyle()),
+                          Text(mExerciseModel!.data!.duration.validate(),
+                              style: boldTextStyle()),
                           2.height,
-                          Text(languages.lblDuration, style: primaryTextStyle()),
+                          Text(languages.lblDuration,
+                              style: primaryTextStyle()),
                         ],
                       ),
                     ).paddingSymmetric(horizontal: 16),
@@ -275,13 +335,15 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       8.height,
-                      Text(languages.lblBodyParts, style: secondaryTextStyle()).paddingSymmetric(horizontal: 16),
+                      Text(languages.lblBodyParts, style: secondaryTextStyle())
+                          .paddingSymmetric(horizontal: 16),
                       8.height,
                       HorizontalList(
                         physics: BouncingScrollPhysics(),
                         controller: mScrollController,
                         itemCount: mExerciseModel!.data!.bodypartName!.length,
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         spacing: 16,
                         itemBuilder: (context, index) {
                           return SizedBox(
@@ -289,13 +351,21 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
                             child: Column(
                               children: [
                                 cachedImage(
-                                  mExerciseModel!.data!.bodypartName![index].bodypartImage.validate(),
+                                  mExerciseModel!
+                                      .data!.bodypartName![index].bodypartImage
+                                      .validate(),
                                   fit: BoxFit.fill,
                                   height: 65,
                                   width: context.width() * 0.18,
                                 ).cornerRadiusWithClipRRect(150),
                                 6.height,
-                                Text(mExerciseModel!.data!.bodypartName![index].title.validate(), style: primaryTextStyle(size: 14), textAlign: TextAlign.center, maxLines: 2),
+                                Text(
+                                    mExerciseModel!
+                                        .data!.bodypartName![index].title
+                                        .validate(),
+                                    style: primaryTextStyle(size: 14),
+                                    textAlign: TextAlign.center,
+                                    maxLines: 2),
                               ],
                             ),
                           );
@@ -308,21 +378,36 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       8.height,
-                      Text(languages.lblEquipments, style: secondaryTextStyle()).paddingSymmetric(horizontal: 16),
+                      Text(languages.lblEquipments, style: secondaryTextStyle())
+                          .paddingSymmetric(horizontal: 16),
                       16.height,
                       Stack(
                         alignment: Alignment.bottomCenter,
                         children: [
-                          cachedImage(mExerciseModel!.data!.equipmentImg.validate(), height: 145, width: context.width() * 0.32, fit: BoxFit.cover).cornerRadiusWithClipRRect(12),
+                          cachedImage(
+                                  mExerciseModel!.data!.equipmentImg.validate(),
+                                  height: 145,
+                                  width: context.width() * 0.32,
+                                  fit: BoxFit.cover)
+                              .cornerRadiusWithClipRRect(12),
                           ClipRRect(
                             borderRadius: radius(12),
                             child: BackdropFilter(
                               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                               child: Container(
                                 width: context.width() * 0.32,
-                                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                                decoration: boxDecorationWithRoundedCorners(borderRadius: radius(12), backgroundColor: Colors.grey.shade100.withOpacity(0.5)),
-                                child: Text(mExerciseModel!.data!.equipmentTitle.validate(), style: primaryTextStyle(size: 12, color: Colors.black)).center(),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 10),
+                                decoration: boxDecorationWithRoundedCorners(
+                                    borderRadius: radius(12),
+                                    backgroundColor:
+                                        Colors.grey.shade100.withOpacity(0.5)),
+                                child: Text(
+                                        mExerciseModel!.data!.equipmentTitle
+                                            .validate(),
+                                        style: primaryTextStyle(
+                                            size: 12, color: Colors.black))
+                                    .center(),
                               ),
                             ),
                           )
@@ -330,7 +415,8 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
                       ).paddingSymmetric(horizontal: 16),
                       30.height,
                     ],
-                  ).visible(!mExerciseModel!.data!.equipmentTitle.isEmptyOrNull),
+                  ).visible(
+                      !mExerciseModel!.data!.equipmentTitle.isEmptyOrNull),
                 ],
               ),
             );

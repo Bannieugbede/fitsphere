@@ -16,6 +16,8 @@ import '../utils/app_config.dart';
 import '../utils/app_constants.dart';
 
 class WalkThroughScreen extends StatefulWidget {
+  const WalkThroughScreen({super.key});
+
   @override
   _WalkThroughScreenState createState() => _WalkThroughScreenState();
 }
@@ -85,7 +87,7 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
               top: context.statusBarHeight,
               right: 4,
               child: TextButton(
-                  style: ButtonStyle(overlayColor: MaterialStateProperty.all(Colors.transparent)),
+                  style: ButtonStyle(overlayColor: WidgetStateProperty.all(Colors.transparent)),
                   onPressed: () {
                     setValue(IS_FIRST_TIME, true);
                     SignInScreen().launch(context);

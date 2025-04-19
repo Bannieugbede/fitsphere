@@ -16,6 +16,8 @@ import 'count_down_progress_indicator.dart';
 class IdealWeightComponent extends StatefulWidget {
   static String tag = '/IdealWeightComponent';
 
+  const IdealWeightComponent({super.key});
+
   @override
   IdealWeightComponentState createState() => IdealWeightComponentState();
 }
@@ -37,22 +39,22 @@ class IdealWeightComponentState extends State<IdealWeightComponent> with TickerP
 
   init() async {
     convertFeetToCm();
-    print("mIdealWeight-->"+userStore.gender.toString());
+    print("mIdealWeight-->${userStore.gender}");
 
 
     if(userStore.gender=="male"){
       if(mCm.validate()>=155.448){
         convertCMToFeet();
        // mIdealWeight =52 + (3(1.9));
-        print("mCm"+mCm.toString());
+        print("mCm$mCm");
       }
     }else{
       if(mCm.validate()>=155.448){
         convertCMToFeet();
 
         // mIdealWeight =45.5+(0.91*((mCm.validate())-152.4));
-        print("mIdealWeight"+mIdealWeight.toString());
-        print("mCm"+mCm.toString());
+        print("mIdealWeight$mIdealWeight");
+        print("mCm$mCm");
       }
     }
     super.initState();
@@ -65,9 +67,9 @@ class IdealWeightComponentState extends State<IdealWeightComponent> with TickerP
     final double abc = 1.4;
     int a1 = int.parse(abc.toString().split(".")[0]);
     int b = int.parse(abc.toString().split(".")[1]);
-    print("Feet->"+a1.toString());
-    print("Feet->"+b.toString());
-    print("Feet->"+a.toStringAsFixed(2).toString());
+    print("Feet->$a1");
+    print("Feet->$b");
+    print("Feet->${a.toStringAsFixed(2)}");
   }
 
   // convert Feet to cm

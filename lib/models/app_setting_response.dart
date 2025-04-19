@@ -51,22 +51,22 @@ class AppSettingResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['site_name'] = this.siteName;
-    data['site_email'] = this.siteEmail;
-    data['site_description'] = this.siteDescription;
-    data['site_copyright'] = this.siteCopyright;
-    data['facebook_url'] = this.facebookUrl;
-    data['instagram_url'] = this.instagramUrl;
-    data['twitter_url'] = this.twitterUrl;
-    data['linkedin_url'] = this.linkedinUrl;
-    data['language_option'] = this.languageOption;
-    data['contact_email'] = this.contactEmail;
-    data['contact_number'] = this.contactNumber;
-    data['help_support_url'] = this.helpSupportUrl;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['site_name'] = siteName;
+    data['site_email'] = siteEmail;
+    data['site_description'] = siteDescription;
+    data['site_copyright'] = siteCopyright;
+    data['facebook_url'] = facebookUrl;
+    data['instagram_url'] = instagramUrl;
+    data['twitter_url'] = twitterUrl;
+    data['linkedin_url'] = linkedinUrl;
+    data['language_option'] = languageOption;
+    data['contact_email'] = contactEmail;
+    data['contact_number'] = contactNumber;
+    data['help_support_url'] = helpSupportUrl;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

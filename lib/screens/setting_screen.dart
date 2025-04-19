@@ -23,6 +23,8 @@ import 'language_screen.dart';
 class SettingScreen extends StatefulWidget {
   static String tag = '/SettingScreen';
 
+  const SettingScreen({super.key});
+
   @override
   SettingScreenState createState() => SettingScreenState();
 }

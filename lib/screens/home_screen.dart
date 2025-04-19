@@ -31,6 +31,8 @@ import 'filter_workout_screen.dart';
 import 'notification_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -40,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController mSearchCont = TextEditingController();
 
   String? mSearchValue = "";
-  bool _showClearButton = false;
+  final bool _showClearButton = false;
 
   @override
   void setState(fn) {
@@ -88,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(languages.lblHey + userStore.displayName.validate().capitalizeFirstLetter() + "👋", style: boldTextStyle(size: 18), overflow: TextOverflow.ellipsis, maxLines: 2),
+                    Text("${languages.lblHey}${userStore.displayName.validate().capitalizeFirstLetter()}👋", style: boldTextStyle(size: 18), overflow: TextOverflow.ellipsis, maxLines: 2),
                     appStore.selectedLanguageCode == 'ar ' ? 0.height : 2.height,
                     Text(languages.lblHomeWelMsg, style: secondaryTextStyle()),
                   ],

@@ -21,7 +21,7 @@ class ViewAllDiet extends StatefulWidget {
   final bool? isAssign;
   final bool? isFav;
 
-  ViewAllDiet({this.isFeatured = false, this.isCategory, this.mCategoryId, this.mTitle, this.isFav = false, this.isAssign = false});
+  const ViewAllDiet({super.key, this.isFeatured = false, this.isCategory, this.mCategoryId, this.mTitle, this.isFav = false, this.isAssign = false});
 
   @override
   _ViewAllDietState createState() => _ViewAllDietState();

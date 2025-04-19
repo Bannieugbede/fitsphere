@@ -15,7 +15,7 @@ class YoutubePlayerScreen extends StatefulWidget {
   final String? url;
   final String? img;
 
-  YoutubePlayerScreen({this.url, this.img});
+  const YoutubePlayerScreen({super.key, this.url, this.img});
 
   @override
   YoutubePlayerScreenState createState() => YoutubePlayerScreenState();
@@ -144,7 +144,7 @@ class YoutubePlayerScreenState extends State<YoutubePlayerScreen> {
           return Future.value(true);
         },
         child: Scaffold(
-          body: Container(
+          body: SizedBox(
             height: context.height(),
             child: Stack(
               alignment: Alignment.topLeft,

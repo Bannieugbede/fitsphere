@@ -12,6 +12,8 @@ import '../network/rest_api.dart';
 import '../utils/app_config.dart';
 
 class ViewLevelScreen extends StatefulWidget {
+  const ViewLevelScreen({super.key});
+
   @override
   _ViewLevelScreenState createState() => _ViewLevelScreenState();
 }

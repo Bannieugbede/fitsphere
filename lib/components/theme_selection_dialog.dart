@@ -14,6 +14,8 @@ import '../utils/app_constants.dart';
 class ThemeSelectionDialog extends StatefulWidget {
   static String tag = '/ThemeSelectionDialog';
 
+  const ThemeSelectionDialog({super.key});
+
   @override
   ThemeSelectionDialogState createState() => ThemeSelectionDialogState();
 }
@@ -40,7 +42,7 @@ class ThemeSelectionDialogState extends State<ThemeSelectionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: context.width(),
       child: Column(
         mainAxisSize: MainAxisSize.min,

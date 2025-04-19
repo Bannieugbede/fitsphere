@@ -18,6 +18,8 @@ import '../utils/app_config.dart';
 import '../utils/app_images.dart';
 
 class LanguageScreen extends StatefulWidget {
+  const LanguageScreen({super.key});
+
   @override
   _LanguageScreenState createState() => _LanguageScreenState();
 }
@@ -37,29 +39,43 @@ class _LanguageScreenState extends State<LanguageScreen> {
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             margin: EdgeInsets.only(bottom: 16),
             decoration: boxDecorationWithRoundedCorners(
-                backgroundColor: getStringAsync(SELECTED_LANGUAGE_CODE, defaultValue: DEFAULT_LANGUAGE) == data.languageCode.validate()
+                backgroundColor: getStringAsync(SELECTED_LANGUAGE_CODE,
+                            defaultValue: DEFAULT_LANGUAGE) ==
+                        data.languageCode.validate()
                     ? primaryColor
                     : appStore.isDarkMode
                         ? context.scaffoldBackgroundColor
                         : cardLightColor,
-                border: Border.all(color: getStringAsync(SELECTED_LANGUAGE_CODE, defaultValue: DEFAULT_LANGUAGE) == data.languageCode.validate() ? primaryColor.withOpacity(0.80) : GreyLightColor)),
+                border: Border.all(
+                    color: getStringAsync(SELECTED_LANGUAGE_CODE,
+                                defaultValue: DEFAULT_LANGUAGE) ==
+                            data.languageCode.validate()
+                        ? primaryColor.withOpacity(0.80)
+                        : GreyLightColor)),
             child: Column(
               children: [
                 Row(
                   children: [
-                    Image.asset(data.flag.validate(), width: 32, fit: BoxFit.cover),
+                    Image.asset(data.flag.validate(),
+                        width: 32, fit: BoxFit.cover),
                     16.width,
-                    Text('${data.name.validate()}',
+                    Text(data.name.validate(),
                             style: boldTextStyle(
-                                color: getStringAsync(SELECTED_LANGUAGE_CODE, defaultValue: DEFAULT_LANGUAGE) == data.languageCode.validate()
+                                color: getStringAsync(SELECTED_LANGUAGE_CODE,
+                                            defaultValue: DEFAULT_LANGUAGE) ==
+                                        data.languageCode.validate()
                                     ? Colors.white
                                     : appStore.isDarkMode
                                         ? Colors.white
                                         : Colors.black))
                         .expand(),
-                    getStringAsync(SELECTED_LANGUAGE_CODE, defaultValue: DEFAULT_LANGUAGE) == data.languageCode.validate()
-                        ? Image.asset(ic_radio_fill, height: 20, width: 20, color: Colors.white)
-                        : Image.asset(ic_radio, color: primaryColor, height: 20, width: 20),
+                    getStringAsync(SELECTED_LANGUAGE_CODE,
+                                defaultValue: DEFAULT_LANGUAGE) ==
+                            data.languageCode.validate()
+                        ? Image.asset(ic_radio_fill,
+                            height: 20, width: 20, color: Colors.white)
+                        : Image.asset(ic_radio,
+                            color: primaryColor, height: 20, width: 20),
                   ],
                 ),
                 4.height,

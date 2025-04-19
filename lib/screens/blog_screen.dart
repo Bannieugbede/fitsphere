@@ -24,6 +24,8 @@ import '../utils/app_images.dart';
 import 'no_data_screen.dart';
 
 class BlogScreen extends StatefulWidget {
+  const BlogScreen({super.key});
+
   @override
   _BlogScreenState createState() => _BlogScreenState();
 }
@@ -60,7 +62,7 @@ class _BlogScreenState extends State<BlogScreen> {
     });
     mSearch.addListener(() {
       setState(() {
-        _showClearButton = mSearch.text.length > 0;
+        _showClearButton = mSearch.text.isNotEmpty;
       });
     });
   }

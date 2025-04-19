@@ -22,6 +22,8 @@ import '../utils/app_constants.dart';
 import '../utils/app_images.dart';
 
 class OTPScreen extends StatefulWidget {
+  const OTPScreen({super.key});
+
   @override
   _OTPScreenState createState() => _OTPScreenState();
 }

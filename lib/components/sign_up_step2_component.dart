@@ -16,7 +16,7 @@ import '../utils/app_constants.dart';
 class SignUpStep2Component extends StatefulWidget {
   final bool? isNewTask;
 
-  SignUpStep2Component({this.isNewTask = false});
+  const SignUpStep2Component({super.key, this.isNewTask = false});
 
   @override
   _SignUpStep2ComponentState createState() => _SignUpStep2ComponentState();

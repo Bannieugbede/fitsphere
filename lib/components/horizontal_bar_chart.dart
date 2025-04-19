@@ -10,7 +10,7 @@ enum ChartType { CHART1, CHART2, CHART3 }
 class HorizontalBarChart extends StatelessWidget {
   final List<GraphModel>? seriesList;
 
-  HorizontalBarChart(this.seriesList);
+  HorizontalBarChart(this.seriesList, {super.key});
 
   final List<GraphModel> data = [];
 
@@ -33,9 +33,9 @@ class HorizontalBarChart extends StatelessWidget {
 
   List<ChartSeries> getDefaultData3() {
     final List<GraphModel> chartData = [];
-    seriesList!.forEach((element) {
+    for (var element in seriesList!) {
       chartData.add(GraphModel(date: element.date, value: element.value));
-    });
+    }
     return <ChartSeries>[
       SplineAreaSeries<GraphModel, String>(
           dataSource: chartData,

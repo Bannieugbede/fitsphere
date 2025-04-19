@@ -28,6 +28,8 @@ import '../utils/app_config.dart';
 import '../utils/app_constants.dart';
 
 class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
+
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }
@@ -80,7 +82,7 @@ class _SignInScreenState extends State<SignInScreen> {
           getUSerDetail(context, value.data!.id).then((value) {
             DashboardScreen().launch(context, isNewTask: true);
           }).catchError((e) {
-            print("error=>" + e.toString());
+            print("error=>$e");
           });
         } else {
           toast(languages.lblContactAdmin);
@@ -109,7 +111,7 @@ class _SignInScreenState extends State<SignInScreen> {
         appStore.setLoading(false);
         DashboardScreen().launch(context, isNewTask: true);
       }).catchError((e) {
-        print("error=>" + e.toString());
+        print("error=>$e");
       });
     }).catchError((e) {
       appStore.setLoading(false);
@@ -221,7 +223,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     height: 20,
                                     width: 20,
                                     child: Checkbox(
-                                      fillColor: MaterialStatePropertyAll(getBoolAsync(IS_REMEMBER) ? primaryColor : Colors.transparent),
+                                      fillColor: WidgetStatePropertyAll(getBoolAsync(IS_REMEMBER) ? primaryColor : Colors.transparent),
                                       shape: RoundedRectangleBorder(borderRadius: radius(4)),
                                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                       focusColor: primaryColor,

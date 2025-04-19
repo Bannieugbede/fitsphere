@@ -16,23 +16,35 @@ class ProductCategoryComponent extends StatefulWidget {
   final isGrid;
   final Function? onCall;
 
-  const ProductCategoryComponent({super.key, this.mProductCategoryModel, this.isGrid = false, this.onCall});
+  const ProductCategoryComponent(
+      {super.key,
+      this.mProductCategoryModel,
+      this.isGrid = false,
+      this.onCall});
 
   @override
-  State<ProductCategoryComponent> createState() => _ProductCategoryComponentState();
+  State<ProductCategoryComponent> createState() =>
+      _ProductCategoryComponentState();
 }
 
 class _ProductCategoryComponentState extends State<ProductCategoryComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: boxDecorationWithRoundedCorners(borderRadius: radius(12), backgroundColor: appStore.isDarkMode ? context.cardColor : GreyLightColor),
-      width: widget.isGrid ? (context.width() - 48) / 2 : context.width() * 0.37,
+      decoration: boxDecorationWithRoundedCorners(
+          borderRadius: radius(12),
+          backgroundColor:
+              appStore.isDarkMode ? context.cardColor : GreyLightColor),
+      width:
+          widget.isGrid ? (context.width() - 48) / 2 : context.width() * 0.37,
       margin: EdgeInsets.only(top: 4),
       padding: EdgeInsets.all(2),
       child: Column(
         children: [
-          cachedImage(widget.mProductCategoryModel!.productcategoryImage.validate(), fit: BoxFit.contain, height: 90),
+          cachedImage(
+              widget.mProductCategoryModel!.productcategoryImage.validate(),
+              fit: BoxFit.contain,
+              height: 90),
           8.height,
           Text(
             widget.mProductCategoryModel!.title!.validate(),

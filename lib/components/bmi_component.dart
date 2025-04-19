@@ -16,6 +16,8 @@ import 'count_down_progress_indicator.dart';
 class BMIComponent extends StatefulWidget {
   static String tag = '/BMIComponent';
 
+  const BMIComponent({super.key});
+
   @override
   BMIComponentState createState() => BMIComponentState();
 }
@@ -54,7 +56,7 @@ class BMIComponentState extends State<BMIComponent> with TickerProviderStateMixi
 
   //Convert lbs to kg
   void convertLbsToKg() {
-    print("user weight->" + userStore.weight.toString());
+    print("user weight->${userStore.weight}");
     double a = double.parse(userStore.weight.toString()) * 2.2046;
     mKg = userStore.weightUnit == LBS ? a : double.parse(userStore.weight.validate());
   }

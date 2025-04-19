@@ -27,6 +27,8 @@ import 'view_product_category_screen.dart';
 class ProductScreen extends StatefulWidget {
   static String tag = '/ProductScreen';
 
+  const ProductScreen({super.key});
+
   @override
   ProductScreenState createState() => ProductScreenState();
 }
@@ -66,7 +68,7 @@ class ProductScreenState extends State<ProductScreen> {
       }
     });
     mSearch.addListener(() {
-      _showClearButton = mSearch.text.length > 0;
+      _showClearButton = mSearch.text.isNotEmpty;
     });
   }
 

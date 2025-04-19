@@ -13,6 +13,8 @@ import '../utils/app_images.dart';
 class StepCountComponent extends StatefulWidget {
   static String tag = '/StepCountComponent';
 
+  const StepCountComponent({super.key});
+
   @override
   StepCountComponentState createState() => StepCountComponentState();
 }

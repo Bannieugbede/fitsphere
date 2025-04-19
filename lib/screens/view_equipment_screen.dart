@@ -12,6 +12,8 @@ import '../network/rest_api.dart';
 import '../utils/app_config.dart';
 
 class ViewEquipmentScreen extends StatefulWidget {
+  const ViewEquipmentScreen({super.key});
+
   @override
   _ViewEquipmentScreenState createState() => _ViewEquipmentScreenState();
 }

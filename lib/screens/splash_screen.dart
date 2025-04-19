@@ -18,6 +18,8 @@ import 'walk_through_screen.dart';
 class SplashScreen extends StatefulWidget {
   static String tag = '/SplashScreen';
 
+  const SplashScreen({super.key});
+
   @override
   SplashScreenState createState() => SplashScreenState();
 }

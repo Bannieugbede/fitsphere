@@ -14,6 +14,8 @@ import '../utils/app_config.dart';
 import '../utils/app_constants.dart';
 
 class AboutUsScreen extends StatefulWidget {
+  const AboutUsScreen({super.key});
+
   @override
   _AboutUsScreenState createState() => _AboutUsScreenState();
 }
@@ -27,7 +29,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarWidget(languages.lblAboutUs, context: context),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 110,
         child: Column(
           children: [

@@ -20,7 +20,7 @@ class WorkoutComponent extends StatefulWidget {
   final Function? onCall;
   final bool isView;
 
-  WorkoutComponent({this.mWorkoutModel, this.onCall, this.isView = false});
+  const WorkoutComponent({super.key, this.mWorkoutModel, this.onCall, this.isView = false});
 
   @override
   _WorkoutComponentState createState() => _WorkoutComponentState();
@@ -89,7 +89,7 @@ class _WorkoutComponentState extends State<WorkoutComponent> {
               Row(
                 children: [
                   Container(margin: EdgeInsets.only(right: 6), height: 4, width: 4, decoration: boxDecorationWithRoundedCorners(boxShape: BoxShape.circle, backgroundColor: white)),
-                  Text('${widget.mWorkoutModel!.workoutTypeTitle.validate()}', style: secondaryTextStyle(color: white)),
+                  Text(widget.mWorkoutModel!.workoutTypeTitle.validate(), style: secondaryTextStyle(color: white)),
                   8.width,
                   Container(height: 14, width: 2, color: primaryColor),
                   8.width,

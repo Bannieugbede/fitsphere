@@ -14,6 +14,8 @@ import 'about_us_screen.dart';
 class AboutAppScreen extends StatefulWidget {
   static String tag = '/AboutAppScreen';
 
+  const AboutAppScreen({super.key});
+
   @override
   AboutAppScreenState createState() => AboutAppScreenState();
 }

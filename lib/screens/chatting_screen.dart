@@ -25,7 +25,7 @@ class ChattingScreen extends StatefulWidget {
 
   final bool isDirect;
 
-  ChattingScreen({this.isDirect = false});
+  const ChattingScreen({super.key, this.isDirect = false});
 
   @override
   _ChattingScreenState createState() => _ChattingScreenState();
@@ -67,7 +67,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
 
   void statusListener(String status) {
     setState(() {
-      lastStatus = "$status";
+      lastStatus = status;
     });
   }
 
@@ -89,13 +89,20 @@ class _ChattingScreenState extends State<ChattingScreen> {
 
     setState(() {
       msgController.clear();
-      questionAnswers.insert(0, QuestionAnswerModel(question: question, answer: StringBuffer(), isLoading: true, smartCompose: selectedText));
+      questionAnswers.insert(
+          0,
+          QuestionAnswerModel(
+              question: question,
+              answer: StringBuffer(),
+              isLoading: true,
+              smartCompose: selectedText));
     });
     final testRequest = ChatCompletionRequest(
       stream: true,
       maxTokens: 4000,
       messages: [Message(role: Role.user.name, content: question)],
-      model: ChatGptModel.gpt35Turbo,
+      // model: ChatGptModel.gpt35Turbo,
+      model: ChatGptModel.gpt35Turbo as String,
     );
 
     await _streamResponse(testRequest);
@@ -115,13 +122,15 @@ class _ChattingScreenState extends State<ChattingScreen> {
           if (event.streamMessageEnd) {
             streamSubscription?.cancel();
           } else {
-            return questionAnswers.first.answer!.write(event.choices?.first.delta?.content);
+            return questionAnswers.first.answer!
+                .write(event.choices?.first.delta?.content);
           }
         });
       });
     } catch (error) {
       setState(() {
-        questionAnswers.first.answer!.write("Too many requests please try again");
+        questionAnswers.first.answer!
+            .write("Too many requests please try again");
       });
       log("Error occurred: $error");
     }
@@ -142,9 +151,14 @@ class _ChattingScreenState extends State<ChattingScreen> {
     );
   }
 
-  void share(BuildContext context, {required List<QuestionAnswerModel> questionAnswers, RenderBox? box}) {
-    String getFinalString = questionAnswers.map((e) => "Q: ${e.question}\nChatGPT: ${e.answer.toString().trim()}\n\n").join(' ');
-    Share.share(getFinalString, sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+  void share(BuildContext context,
+      {required List<QuestionAnswerModel> questionAnswers, RenderBox? box}) {
+    String getFinalString = questionAnswers
+        .map((e) =>
+            "Q: ${e.question}\nChatGPT: ${e.answer.toString().trim()}\n\n")
+        .join(' ');
+    Share.share(getFinalString,
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
   }
 
   @override
@@ -162,7 +176,8 @@ class _ChattingScreenState extends State<ChattingScreen> {
           onPressed: () {
             showDialog();
           },
-          icon: Icon(Icons.restart_alt, color: appStore.isDarkMode ? Colors.white : Colors.black),
+          icon: Icon(Icons.restart_alt,
+              color: appStore.isDarkMode ? Colors.white : Colors.black),
           tooltip: languages.lblClearConversion,
         ).visible(questionAnswers.isNotEmpty),
       ]),
@@ -183,7 +198,10 @@ class _ChattingScreenState extends State<ChattingScreen> {
               itemBuilder: (_, index) {
                 QuestionAnswerModel data = questionAnswers[index];
                 String answer = data.answer.toString().trim();
-                return ChatMessageWidget(answer: answer, data: data, isLoading: data.isLoading.validate());
+                return ChatMessageWidget(
+                    answer: answer,
+                    data: data,
+                    isLoading: data.isLoading.validate());
               },
             ),
           ),
@@ -208,9 +226,11 @@ class _ChattingScreenState extends State<ChattingScreen> {
                       controller: msgController,
                       minLines: 1,
                       maxLines: 1,
-                      cursorColor: appStore.isDarkMode ? Colors.white : Colors.black,
+                      cursorColor:
+                          appStore.isDarkMode ? Colors.white : Colors.black,
                       keyboardType: TextInputType.multiline,
-                      decoration: defaultInputDecoration(context, label: languages.lblChatHintText),
+                      decoration: defaultInputDecoration(context,
+                          label: languages.lblChatHintText),
                       onFieldSubmitted: (s) {
                         sendMessage();
                       },
@@ -221,7 +241,9 @@ class _ChattingScreenState extends State<ChattingScreen> {
                     ).expand(),
                     10.width,
                     Container(
-                      decoration: boxDecorationWithRoundedCorners(backgroundColor: primaryColor, borderRadius: radius(14)),
+                      decoration: boxDecorationWithRoundedCorners(
+                          backgroundColor: primaryColor,
+                          borderRadius: radius(14)),
                       child: IconButton(
                         highlightColor: Colors.transparent,
                         splashColor: Colors.transparent,

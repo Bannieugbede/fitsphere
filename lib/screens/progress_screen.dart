@@ -20,6 +20,8 @@ import '../utils/app_constants.dart';
 class ProgressScreen extends StatefulWidget {
   static String tag = '/ProgressScreen';
 
+  const ProgressScreen({super.key});
+
   @override
   ProgressScreenState createState() => ProgressScreenState();
 }
@@ -111,7 +113,7 @@ class ProgressScreenState extends State<ProgressScreen> {
                 FutureBuilder(
                   future: getProgressApi(METRICS_WEIGHT),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData)
+                    if (snapshot.hasData) {
                       return Container(
                         margin: EdgeInsets.symmetric(horizontal: 16),
                         decoration:
@@ -134,6 +136,7 @@ class ProgressScreenState extends State<ProgressScreen> {
                           }
                         }),
                       );
+                    }
                     return snapWidgetHelper(snapshot, loadingWidget: SizedBox());
                   },
                 ),
@@ -141,7 +144,7 @@ class ProgressScreenState extends State<ProgressScreen> {
                 FutureBuilder(
                   future: getProgressApi(METRICS_HEART_RATE),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData)
+                    if (snapshot.hasData) {
                       return Container(
                         margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                         decoration:
@@ -164,6 +167,7 @@ class ProgressScreenState extends State<ProgressScreen> {
                           }
                         }),
                       );
+                    }
                     return snapWidgetHelper(snapshot);
                   },
                 ),
@@ -171,7 +175,7 @@ class ProgressScreenState extends State<ProgressScreen> {
                 FutureBuilder(
                   future: getProgressApi(PUSH_UP_MIN),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData)
+                    if (snapshot.hasData) {
                       return Container(
                         margin: EdgeInsets.symmetric(horizontal: 16),
                         decoration:
@@ -194,6 +198,7 @@ class ProgressScreenState extends State<ProgressScreen> {
                           }
                         }),
                       );
+                    }
                     return snapWidgetHelper(snapshot);
                   },
                 ),

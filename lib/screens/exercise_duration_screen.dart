@@ -15,7 +15,7 @@ class ExerciseDurationScreen extends StatefulWidget {
   static String tag = '/ExerciseDurationScreen';
   final ExerciseDetailResponse? mExerciseModel;
 
-  ExerciseDurationScreen(this.mExerciseModel);
+  const ExerciseDurationScreen(this.mExerciseModel, {super.key});
 
   @override
   ExerciseDurationScreenState createState() => ExerciseDurationScreenState();

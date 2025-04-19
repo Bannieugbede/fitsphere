@@ -24,7 +24,7 @@ class SetReminderScreen extends StatefulWidget {
 
   final bool? isDaily;
 
-  SetReminderScreen({this.isDaily = false});
+  const SetReminderScreen({super.key, this.isDaily = false});
 
   @override
   SetReminderScreenState createState() => SetReminderScreenState();
@@ -178,7 +178,7 @@ class SetReminderScreenState extends State<SetReminderScreen> {
   }
 
   Widget hourMinute12H() {
-    return new TimePickerSpinner(
+    return TimePickerSpinner(
       spacing: 50,
       normalTextStyle: boldTextStyle(size: 24, color: textColor),
       highlightedTextStyle: boldTextStyle(size: 28),

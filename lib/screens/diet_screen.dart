@@ -26,6 +26,8 @@ import 'no_data_screen.dart';
 import 'view_diet_category_screen.dart';
 
 class DietScreen extends StatefulWidget {
+  const DietScreen({super.key});
+
   @override
   _DietScreenState createState() => _DietScreenState();
 }
@@ -55,7 +57,7 @@ class _DietScreenState extends State<DietScreen> {
     getDietData();
     mSearch.addListener(() {
       setState(() {
-        _showClearButton = mSearch.text.length > 0;
+        _showClearButton = mSearch.text.isNotEmpty;
       });
     });
   }

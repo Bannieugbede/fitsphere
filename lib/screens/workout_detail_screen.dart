@@ -29,7 +29,7 @@ class WorkoutDetailScreen extends StatefulWidget {
 
   final WorkoutDetailModel? mWorkoutModel;
 
-  WorkoutDetailScreen({this.id, this.mWorkoutModel});
+  const WorkoutDetailScreen({super.key, this.id, this.mWorkoutModel});
 
   @override
   _WorkoutDetailScreenState createState() => _WorkoutDetailScreenState();
@@ -265,13 +265,13 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen> {
                                                   List<String>? mSets = [];
                                                   if (mDayExerciseList[index].exercise!.type == "sets") {
                                                     if (mDayExerciseList[index].exercise!.sets!.isNotEmpty) {
-                                                      mDayExerciseList[index].exercise!.sets!.forEach((element) {
+                                                      for (var element in mDayExerciseList[index].exercise!.sets!) {
                                                         if (mDayExerciseList[index].exercise!.based.toString() == "time") {
-                                                          mSets.add(element.time.toString() + "s");
+                                                          mSets.add("${element.time}s");
                                                         } else {
-                                                          mSets.add(element.reps.toString() + "x");
+                                                          mSets.add("${element.reps}x");
                                                         }
-                                                      });
+                                                      }
                                                     }
                                                   }
                                                   return ExerciseDayComponent(mDayExerciseModel: mDayExerciseList[index], mSets: mSets);

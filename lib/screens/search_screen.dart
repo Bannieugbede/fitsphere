@@ -29,7 +29,7 @@ import '../utils/app_images.dart';
 class SearchScreen extends StatefulWidget {
   final int? id;
 
-  const SearchScreen({
+  const SearchScreen({super.key, 
     this.id,
   });
 
@@ -75,7 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
     });
     mSearch.addListener(() {
       setState(() {
-        _showClearButton = mSearch.text.length > 0;
+        _showClearButton = mSearch.text.isNotEmpty;
       });
     });
   }

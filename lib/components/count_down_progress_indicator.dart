@@ -32,7 +32,7 @@ class CountDownProgressIndicator extends StatefulWidget {
 
   // ignore: public_member_api_docs
   const CountDownProgressIndicator({
-    Key? key,
+    super.key,
     required this.duration,
     this.initialPosition = 0,
     required this.backgroundColor,
@@ -46,8 +46,7 @@ class CountDownProgressIndicator extends StatefulWidget {
     this.text,
     this.autostart = true,
   })  : assert(duration > 0),
-        assert(initialPosition < duration),
-        super(key: key);
+        assert(initialPosition < duration);
 
   @override
   _CountDownProgressIndicatorState createState() => _CountDownProgressIndicatorState();

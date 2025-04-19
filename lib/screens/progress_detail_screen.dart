@@ -31,7 +31,7 @@ class ProgressDetailScreen extends StatefulWidget {
 
   final Function? onCall;
 
-  ProgressDetailScreen({this.mType, this.mUnit, this.mTitle, this.onCall});
+  const ProgressDetailScreen({super.key, this.mType, this.mUnit, this.mTitle, this.onCall});
 
   @override
   ProgressDetailScreenState createState() => ProgressDetailScreenState();

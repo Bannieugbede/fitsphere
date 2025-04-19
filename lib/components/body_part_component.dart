@@ -15,7 +15,7 @@ class BodyPartComponent extends StatefulWidget {
   final isFilter;
   final BodyPartModel? bodyPartModel;
 
-  BodyPartComponent({this.bodyPartModel, this.isGrid = false, this.isFilter = false});
+  const BodyPartComponent({super.key, this.bodyPartModel, this.isGrid = false, this.isFilter = false});
 
   @override
   _BodyPartComponentState createState() => _BodyPartComponentState();

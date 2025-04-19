@@ -27,7 +27,7 @@ class FeaturedDietComponent extends StatefulWidget {
 
   final Function? onCall;
 
-  FeaturedDietComponent({this.mDietModel, this.isList = false, this.isFeatured, this.isCategory, this.mCategoryId, this.onCall});
+  const FeaturedDietComponent({super.key, this.mDietModel, this.isList = false, this.isFeatured, this.isCategory, this.mCategoryId, this.onCall});
 
   @override
   _FeaturedDietComponentState createState() => _FeaturedDietComponentState();

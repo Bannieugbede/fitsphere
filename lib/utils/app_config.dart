@@ -1,10 +1,10 @@
 //region App Name
-const APP_NAME = "Mighty Fitness";
+const APP_NAME = "Fit Sphere";
 //endregion
 
 //region baseurl
 /// Note: /Add your domain is www.abc.com
-const mBackendURL = "https://apps.meetmighty.com/mightyfitness";
+const mBackendURL = "www.abc.com";
 //endregion
 
 //region Default Language Code
@@ -22,7 +22,7 @@ const mOneSignalID = 'ADD_YOUR_ONE_SIGNAL_KEY';
 //endregion
 
 //region country
-String? countryCode = "IN";
+String? countryCode = "NG";
 //endregion
 
 //region logins
@@ -39,8 +39,8 @@ const WORKOUT_TYPE_PAGE = 10;
 //endregion
 
 //region payment description and identifier
-const mRazorDescription = 'Mighty Fitness';
-const mStripeIdentifier = 'IN';
+const mRazorDescription = 'Fit Sphere';
+const mStripeIdentifier = 'NG';
 //endregion
 
 //region urls

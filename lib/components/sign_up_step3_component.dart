@@ -11,7 +11,7 @@ import '../utils/app_colors.dart';
 class SignUpStep3Component extends StatefulWidget {
   final bool? isNewTask;
 
-  SignUpStep3Component({this.isNewTask = false});
+  const SignUpStep3Component({super.key, this.isNewTask = false});
 
   @override
   _SignUpStep3ComponentState createState() => _SignUpStep3ComponentState();

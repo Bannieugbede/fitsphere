@@ -11,6 +11,8 @@ import '../network/rest_api.dart';
 import '../utils/app_config.dart';
 
 class ViewBodyPartScreen extends StatefulWidget {
+  const ViewBodyPartScreen({super.key});
+
   @override
   _ViewBodyPartScreenState createState() => _ViewBodyPartScreenState();
 }

@@ -55,7 +55,7 @@ Future<NotificationWeekAndTime?> pickSchedule(
   int? currentIndex = -1;
   await showInDialog(context,
       shape: RoundedRectangleBorder(borderRadius: radius()),
-      builder: (_) => Container(
+      builder: (_) => SizedBox(
             width: context.width(),
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -20,7 +20,7 @@ class TipsScreen extends StatefulWidget {
   final String? mExerciseVideo;
   final String? mExerciseInstruction;
 
-  TipsScreen({this.mTips, this.mExerciseVideo, this.mExerciseImage, this.mExerciseInstruction});
+  const TipsScreen({super.key, this.mTips, this.mExerciseVideo, this.mExerciseImage, this.mExerciseInstruction});
 
   @override
   TipsScreenState createState() => TipsScreenState();

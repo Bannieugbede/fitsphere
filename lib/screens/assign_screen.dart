@@ -12,6 +12,8 @@ import 'view_all_diet.dart';
 class AssignScreen extends StatefulWidget {
   static String tag = '/AssignScreen';
 
+  const AssignScreen({super.key});
+
   @override
   AssignScreenState createState() => AssignScreenState();
 }

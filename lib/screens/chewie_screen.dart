@@ -13,7 +13,7 @@ class ChewieScreen extends StatefulWidget {
   final String url;
   final String image;
 
-  ChewieScreen(this.url, this.image);
+  const ChewieScreen(this.url, this.image, {super.key});
 
   @override
   State<StatefulWidget> createState() {

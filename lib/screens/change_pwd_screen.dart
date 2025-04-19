@@ -21,6 +21,8 @@ import '../utils/app_common.dart';
 import '../utils/app_constants.dart';
 
 class ChangePwdScreen extends StatefulWidget {
+  const ChangePwdScreen({super.key});
+
   @override
   _ChangePwdScreenState createState() => _ChangePwdScreenState();
 }

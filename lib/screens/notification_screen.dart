@@ -49,52 +49,95 @@ class _NotificationScreenState extends State<NotificationScreen> {
               return snapshot.data!.notificationData!.isNotEmpty
                   ? AnimatedListView(
                       itemCount: snapshot.data!.notificationData!.length,
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       shrinkWrap: true,
                       physics: BouncingScrollPhysics(),
                       itemBuilder: (context, i) {
-                        NotificationData mNotification = snapshot.data!.notificationData![i];
+                        NotificationData mNotification =
+                            snapshot.data!.notificationData![i];
                         return Container(
-                          decoration: appStore.isDarkMode ? boxDecorationWithRoundedCorners(backgroundColor: cardDarkColor, borderRadius: radius(16)) : boxDecorationRoundedWithShadow(16),
+                          decoration: appStore.isDarkMode
+                              ? boxDecorationWithRoundedCorners(
+                                  backgroundColor: cardDarkColor,
+                                  borderRadius: radius(16))
+                              : boxDecorationRoundedWithShadow(16),
                           padding: EdgeInsets.all(12),
                           margin: EdgeInsets.only(bottom: 16),
-                          child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                mNotification.data!.image.isEmptyOrNull
-                                    ? Container(
-                                        width: 55,
-                                        height: 55,
-                                        decoration: boxDecorationWithRoundedCorners(borderRadius: radius(10), backgroundColor: primaryOpacity),
-                                        child: Text(mNotification.data!.subject!.isNotEmpty ? mNotification.data!.subject![0].toUpperCase() : '', style: boldTextStyle(color: primaryColor, size: 24)).center(),
-                                      )
-                                    : cachedImage(mNotification.data!.image.toString(), width: 55, height: 55, fit: BoxFit.fill).cornerRadiusWithClipRRect(10),
-                                10.width,
-                                Column(
+                                Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    2.height,
-                                    Text(mNotification.data!.subject.validate().capitalizeFirstLetter(), style: boldTextStyle()),
-                                    2.height,
-                                    Text(mNotification.data!.message.validate(), style: secondaryTextStyle(color: textColor), maxLines: 2, overflow: TextOverflow.ellipsis)
+                                    mNotification.data!.image.isEmptyOrNull
+                                        ? Container(
+                                            width: 55,
+                                            height: 55,
+                                            decoration:
+                                                boxDecorationWithRoundedCorners(
+                                                    borderRadius: radius(10),
+                                                    backgroundColor:
+                                                        primaryOpacity),
+                                            child: Text(
+                                                    mNotification.data!.subject!
+                                                            .isNotEmpty
+                                                        ? mNotification
+                                                            .data!.subject![0]
+                                                            .toUpperCase()
+                                                        : '',
+                                                    style: boldTextStyle(
+                                                        color: primaryColor,
+                                                        size: 24))
+                                                .center(),
+                                          )
+                                        : cachedImage(
+                                                mNotification.data!.image
+                                                    .toString(),
+                                                width: 55,
+                                                height: 55,
+                                                fit: BoxFit.fill)
+                                            .cornerRadiusWithClipRRect(10),
+                                    10.width,
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        2.height,
+                                        Text(
+                                            mNotification.data!.subject
+                                                .validate()
+                                                .capitalizeFirstLetter(),
+                                            style: boldTextStyle()),
+                                        2.height,
+                                        Text(
+                                            mNotification.data!.message
+                                                .validate(),
+                                            style: secondaryTextStyle(
+                                                color: textColor),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis)
+                                      ],
+                                    ).expand(),
                                   ],
-                                ).expand(),
-                              ],
-                            ),
-                            5.height,
-                            Align(
-                              alignment: Alignment.bottomRight,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(mNotification.createdAt.validate(), style: secondaryTextStyle(size: 12)),
-                                  4.width,
-                                  mNotification.readAt.isEmptyOrNull ? Icon(Icons.circle, size: 8, color: GreenColor) : SizedBox(),
-                                ],
-                              ),
-                            ),
-                          ]),
+                                ),
+                                5.height,
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text(mNotification.createdAt.validate(),
+                                          style: secondaryTextStyle(size: 12)),
+                                      4.width,
+                                      mNotification.readAt.isEmptyOrNull
+                                          ? Icon(Icons.circle,
+                                              size: 8, color: greenColor)
+                                          : SizedBox(),
+                                    ],
+                                  ),
+                                ),
+                              ]),
                         ).onTap(() {
                           if (mNotification.readAt.isEmptyOrNull) {
                             getNotificationStatus(mNotification.id.toString());
@@ -106,9 +149,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(no_data_found, height: context.height() * 0.2, width: context.width() * 0.4),
+                        Image.asset(no_data_found,
+                            height: context.height() * 0.2,
+                            width: context.width() * 0.4),
                         16.height,
-                        Text(languages.lblNotificationEmpty, style: boldTextStyle()),
+                        Text(languages.lblNotificationEmpty,
+                            style: boldTextStyle()),
                       ],
                     ).center();
             }

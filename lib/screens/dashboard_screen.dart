@@ -25,6 +25,8 @@ import 'profile_screen.dart';
 import 'progress_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
+
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }

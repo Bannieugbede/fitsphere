@@ -14,7 +14,7 @@ class FavouriteScreen extends StatefulWidget {
 
   final int index;
 
-  FavouriteScreen({required this.index});
+  const FavouriteScreen({super.key, required this.index});
 
   @override
   FavouriteScreenState createState() => FavouriteScreenState();

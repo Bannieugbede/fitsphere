@@ -28,6 +28,8 @@ import 'about_app_screen.dart';
 import 'favourite_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }

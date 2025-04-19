@@ -27,7 +27,7 @@ class SearchCategoryBottomSheet extends StatefulWidget {
   final List<EquipmentModel>? mEquipmentList;
   final List<LevelModel>? mLevelList;
 
-  SearchCategoryBottomSheet({super.key, this.listId, this.onCall, this.equipmentId, this.mEquipmentList, this.mLevelList});
+  const SearchCategoryBottomSheet({super.key, this.listId, this.onCall, this.equipmentId, this.mEquipmentList, this.mLevelList});
 
   @override
   State<SearchCategoryBottomSheet> createState() => _SearchCategoryBottomSheetState();

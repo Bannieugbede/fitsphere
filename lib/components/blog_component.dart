@@ -15,7 +15,7 @@ class BlogComponent extends StatefulWidget {
   final BlogModel? mBlogModel;
   final Function? onCall;
 
-  BlogComponent({this.mBlogModel, this.onCall});
+  const BlogComponent({super.key, this.mBlogModel, this.onCall});
 
   @override
   _BlogComponentState createState() => _BlogComponentState();

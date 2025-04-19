@@ -24,7 +24,7 @@ class ExerciseListScreen extends StatefulWidget {
 
   final int? id;
 
-  ExerciseListScreen({this.mTitle, this.isBodyPart = false, this.isLevel = false, this.isEquipment = false, this.id});
+  const ExerciseListScreen({super.key, this.mTitle, this.isBodyPart = false, this.isLevel = false, this.isEquipment = false, this.id});
 
   @override
   _ExerciseListScreenState createState() => _ExerciseListScreenState();
@@ -93,6 +93,7 @@ class _ExerciseListScreenState extends State<ExerciseListScreen> {
           margin: EdgeInsets.only(left: 8, top: 4),
           duration: Duration(milliseconds: 100),
           curve: Curves.decelerate,
+          width: isSearch ? context.width() - 80 : 50,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -137,7 +138,6 @@ class _ExerciseListScreenState extends State<ExerciseListScreen> {
               )
             ],
           ),
-          width: isSearch ? context.width() - 80 : 50,
         ),
       ]),
       body: Stack(

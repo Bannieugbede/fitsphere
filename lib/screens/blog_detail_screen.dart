@@ -22,7 +22,7 @@ import '../../models/blog_response.dart';
 class BlogDetailScreen extends StatefulWidget {
   final BlogModel? mBlogModel;
 
-  BlogDetailScreen({this.mBlogModel});
+  const BlogDetailScreen({super.key, this.mBlogModel});
 
   @override
   _BlogDetailScreenState createState() => _BlogDetailScreenState();

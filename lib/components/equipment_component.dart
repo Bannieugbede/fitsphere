@@ -19,7 +19,7 @@ class EquipmentComponent extends StatefulWidget {
 
   final EquipmentModel? mEquipmentModel;
 
-  EquipmentComponent({this.mEquipmentModel, this.isGrid = false, this.isSearch = false, this.isEquId, this.onCall});
+  const EquipmentComponent({super.key, this.mEquipmentModel, this.isGrid = false, this.isSearch = false, this.isEquId, this.onCall});
 
   @override
   _EquipmentComponentState createState() => _EquipmentComponentState();

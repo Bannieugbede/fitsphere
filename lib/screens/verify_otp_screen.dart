@@ -28,7 +28,7 @@ class VerifyOTPScreen extends StatefulWidget {
   final bool? isCodeSent;
   final PhoneAuthCredential? credential;
 
-  VerifyOTPScreen({this.verificationId, this.isCodeSent, this.phoneNumber, this.mobileNo, this.credential});
+  const VerifyOTPScreen({super.key, this.verificationId, this.isCodeSent, this.phoneNumber, this.mobileNo, this.credential});
 
   @override
   _VerifyOTPScreenState createState() => _VerifyOTPScreenState();
@@ -85,7 +85,7 @@ class _VerifyOTPScreenState extends State<VerifyOTPScreen> {
         setState(() {});
       });
     }).catchError((e) {
-      log("error->" + e.toString());
+      log("error->$e");
       toast(e.toString());
       appStore.setLoading(false);
       setState(() {});
